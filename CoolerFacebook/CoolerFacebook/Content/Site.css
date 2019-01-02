@@ -20,5 +20,17 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+  max-width: 280px;
+}
+
+.div-top-margin {
+  margin-top: 50px;
+}
+
+.col-pagination {
+  padding: 25px;
+}
+
+.btn-height-90 {
+  height: 90px;
 }
