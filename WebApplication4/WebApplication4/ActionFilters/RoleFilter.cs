@@ -8,7 +8,7 @@ using System.Web.Routing;
 public class RoleFilter : ActionFilterAttribute
 {
    
-
+    [Authorize]
     public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
         if (filterContext.Result is ViewResultBase result)

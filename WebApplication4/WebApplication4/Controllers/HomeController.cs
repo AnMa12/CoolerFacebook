@@ -9,16 +9,12 @@ using System.Web.UI;
 
 namespace WebApplication4.Controllers
 {
-    [RoleFilter]
+    [Authorize]
     public class HomeController : Controller
     {
        
         public ActionResult Index()
         {
-            /*bool val1 = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
-            if (val1)
-                return RedirectToAction("Register", "Account");*/
-           
             return View();
         }
 

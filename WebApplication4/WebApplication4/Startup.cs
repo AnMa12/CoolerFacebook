@@ -36,7 +36,7 @@ namespace WebApplication4
                 user.Email = "lavinia@icloud.com";
                 user.FirstName = "Lavinia";
                 user.LastName = "Mihalachi";
-                string pwd = "Lavinia.1";
+                string pwd = "Lavinia1!";
                 var adminCreated = UserManager.Create(user, pwd);
                 if (adminCreated.Succeeded)
                 {
