@@ -95,13 +95,15 @@ namespace CoolerFacebook.Controllers
             return View();
 
         }
-       /* public ActionResult AddComment(string Text)
+
+        [HttpPost]
+        public ActionResult AddComment( string Text)
         {
-            var currentUserId = User.Identity.GetUserId();
+           /* var currentUserId = User.Identity.GetUserId();
             ApplicationUser user = db.Users.Find(currentUserId);
-            //id photo
-            //Photo pic = db.Photos.Find(id);
-            Comment comment = new Comment(Text, pic, user);
+            int id = int.Parse(PhotoId);
+            Photo pic = db.Photos.Find(id);
+            Comment comment = new Comment("lavinia", pic, user);
                  
             try
             {
@@ -109,14 +111,16 @@ namespace CoolerFacebook.Controllers
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 //return RedirectToAction("ShowPhotos");
-                return Redirect("/Album/ShowPhotos/" + id);
+                return Redirect("/Album/ShowPhotos/" + pic.Album.AlbumId);
+                //return RedirectToAction("Index", "Profile");
             }
             catch (Exception e)
             {
-                return View();
-            }
+                return View("New");
+            }*/
+            return View("New");
 
-        }*/
+        }
 
 
     }
