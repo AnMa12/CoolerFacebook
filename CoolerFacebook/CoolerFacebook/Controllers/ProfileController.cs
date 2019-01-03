@@ -21,7 +21,12 @@ namespace CoolerFacebook.Controllers
             
             Profile profile = db.Profiles.Where( i => i.User.Id == currentUserId).FirstOrDefault();
             ViewBag.Profile = profile;
-            
+
+            if (TempData.ContainsKey("message"))
+            {
+                ViewBag.message = TempData["message"].ToString();
+            }
+
             return View();
         }
 
@@ -39,8 +44,7 @@ namespace CoolerFacebook.Controllers
             var currentUserId = User.Identity.GetUserId();
             try
             {
-                //var user = User.Identity.GetUserId();
-                //profile.User.Id = user;
+                
                 profile.User = db.Users.Find(currentUserId);
                 db.Profiles.Add(profile);
                 db.SaveChanges();
@@ -53,26 +57,32 @@ namespace CoolerFacebook.Controllers
         }
 
         // EDIT: Profile
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int id)
         {
-            Profile profile = db.Profiles.Find(Id);
+            Profile profile = db.Profiles.Find(id);
             ViewBag.Profile = profile;
             return View();
         }
 
         [HttpPut]
-        public ActionResult Edit(int ProfileId, Profile requestProfile)
+        public ActionResult Edit(int id, Profile requestProfile)
         {
             try
             {
-                Profile profile = db.Profiles.Find(ProfileId);
+                Profile profile = db.Profiles.Find(id);
                 if (TryUpdateModel(profile))
                 {
+                    TempData["message"] = "S-a modificat " + profile.FirstName;
+                        
+
                     profile.FirstName = requestProfile.FirstName;
                     profile.LastName = requestProfile.LastName;
-                    profile.Description = requestProfile.Description;
+                    profile.Description = "lavinia";
+                        //requestProfile.Description;
                     db.SaveChanges();
+                    return RedirectToAction("Index","Home");
                 }
+                TempData["message"] = "NU s-a modificat " + profile.ProfileId + id;
                 return RedirectToAction("Index");
             }
             catch (Exception e)
