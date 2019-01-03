@@ -18,27 +18,30 @@ namespace CoolerFacebook.Controllers
         {
             //AICI TREBUIE IN FUNCTIE DE USER SA LUAM ID-UL PROFILULUI!!!
             var currentUserId = User.Identity.GetUserId();
-            //acum avem id-ul user-ului trebuie sa parcurgem toata lista 
-            //de profiles si sa luam profilul care are id-ul currentUserId
-            var currentProfileId = 6;
-            Profile profile = db.Profiles.Find(currentProfileId);
+            
+            Profile profile = db.Profiles.Where( i => i.User.Id == currentUserId).FirstOrDefault();
             ViewBag.Profile = profile;
+            
             return View();
         }
 
         // CREATE: Profile
         public ActionResult New()
         {
+            var currentUserId = User.Identity.GetUserId();
+            ViewBag.user = db.Users.Find(currentUserId);
             return View();
         }
 
         [HttpPost]
         public ActionResult New(Profile profile)
         {
+            var currentUserId = User.Identity.GetUserId();
             try
             {
                 //var user = User.Identity.GetUserId();
                 //profile.User.Id = user;
+                profile.User = db.Users.Find(currentUserId);
                 db.Profiles.Add(profile);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -50,9 +53,9 @@ namespace CoolerFacebook.Controllers
         }
 
         // EDIT: Profile
-        public ActionResult Edit(int ProfileId)
+        public ActionResult Edit(int Id)
         {
-            Profile profile = db.Profiles.Find(ProfileId);
+            Profile profile = db.Profiles.Find(Id);
             ViewBag.Profile = profile;
             return View();
         }

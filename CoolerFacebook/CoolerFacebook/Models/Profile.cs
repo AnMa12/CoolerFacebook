@@ -20,5 +20,6 @@ namespace CoolerFacebook.Models
         //colectie albume
         public virtual ICollection<Album> Albums { get; set; }
         public virtual ApplicationUser User { get; set; }
+
     }
 }
