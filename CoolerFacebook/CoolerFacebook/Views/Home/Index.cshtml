@@ -1,13 +1,29 @@
 ﻿@{
   ViewBag.Title = "Home Page";
 }
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+</head>
 
 <div class="div-top-margin">
   <div class="row">
+    <div class="col-md-4 center-icon">
+      <i class='far fa-user-circle icon-style'></i>
+    </div>
+    <div class="col-md-4 center-icon">
+      <i class='fas fa-user-friends icon-style'></i>
+    </div>
+    <div class="col-md-4 center-icon">
+      <i class='fas fa-users icon-style'></i>
+    </div>
     <div class="col-md-4 col-pagination">
-      <button type="button" class="btn btn-primary btn-lg btn-block btn-height-90">
-        Profilul meu
-      </button>
+      <a href='@Url.Action("Index", "Profile")'>
+        <button type="button"
+                class="btn btn-primary btn-lg btn-block btn-height-90">
+          Profilul meu
+        </button>
+      </a>
     </div>
     <div class="col-md-4 col-pagination">
       <button type="button" class="btn btn-primary btn-lg btn-block btn-height-90">
@@ -33,6 +49,9 @@
     </div>
   </div>
   <div class="row">
+    @*<div class="col-md-12 center-icon">
+      <i class='far fa-comment-dots icon-style'></i>
+    </div>*@
     <div class="col-md-12 col-pagination">
       <button type="button" class="btn btn-primary btn-lg btn-block btn-height-90">
         Chat

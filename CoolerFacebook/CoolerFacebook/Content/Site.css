@@ -23,12 +23,21 @@ textarea {
   max-width: 280px;
 }
 
+.center-icon {
+  text-align: center;
+}
+
+.icon-style {
+  font-size: 90px;
+  color: #337ab7;
+}
+
 .div-top-margin {
   margin-top: 50px;
 }
 
 .col-pagination {
-  padding: 25px;
+  padding: 10px 25px 45px 25px;
 }
 
 .btn-height-90 {
