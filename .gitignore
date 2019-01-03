@@ -66,3 +66,13 @@ CoolerFacebook/.vs/CoolerFacebook/v15/.suo
 *.ide
 CoolerFacebook/.vs/CoolerFacebook/v15/.suo
 *.config
+CoolerFacebook/.vs/CoolerFacebook/v15/Server/sqlite3/storage.ide-shm
+CoolerFacebook/.vs/CoolerFacebook/v15/.suo
+*.ide-shm
+*.mdf
+*.ldf
+*.dll
+*.pdb
+*.cache
+*.dll
+*.pdb
