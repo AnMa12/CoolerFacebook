@@ -1,31 +1,31 @@
 ﻿
 @{
-  ViewBag.Title = "New";
+  ViewBag.Title = "Edit";
 }
 
-<h2 class="theme-color title-style">Creeaza profilul</h2>
+<h2 class="theme-color title-style">Editeaza profilul</h2>
 <hr />
 
-<form method="post" action="/Profile/New">
+<form method="post" action="/Profile/Edit/@ViewBag.Profile.ProfileId">
   <div class="form-group">
     <label for="lastName">Nume</label>
-    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume"
-           name="LastName">
+    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume" 
+           value="@ViewBag.Profile.LastName">
   </div>
   <div class="form-group">
     <label for="firstName">Prenume</label>
     <input type="text" class="form-control" id="firstName" placeholder="Prenume"
-           name="FirstName">
+           value="@ViewBag.Profile.FirstName">
   </div>
   <div class="form-group">
     <label for="profilePicture">Poza de profil</label>
     <input type="file" class="form-control-file" id="profilePicture"
-           name="Path">
+           value="@ViewBag.Profile.Path">
   </div>
   <div class="form-group">
     <label for="description">Descriere</label>
     <textarea class="form-control" id="description" rows="3"
-              name="Description"></textarea>
+              value="@ViewBag.Profile.Description"></textarea>
   </div>
   <label for="visibility">Vizibilitatea profilului</label>
   <div class="form-check form-check-inline">
