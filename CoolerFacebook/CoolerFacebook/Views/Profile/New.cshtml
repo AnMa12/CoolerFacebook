@@ -1,0 +1,40 @@
+﻿
+@{
+  ViewBag.Title = "New";
+}
+
+<h2 class="theme-color title-style">Creeaza-ti profilul</h2>
+<hr />
+
+<form>
+  <div class="form-group">
+    <label for="lastName">Nume</label>
+    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume">
+  </div>
+  <div class="form-group">
+    <label for="firstName">Prenume</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Prenume">
+  </div>
+  <div class="form-group">
+    <label for="profilePicture">Poza de profil</label>
+    <input type="file" class="form-control-file" id="profilePicture">
+  </div>
+  <div class="form-group">
+    <label for="description">Descriere</label>
+    <textarea class="form-control" id="description" rows="3"></textarea>
+  </div>
+  <label for="visibility">Vizibilitatea profilului</label>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="visibility" id="public" value="public" checked>
+    <label style="font-weight: normal;" class="form-check-label" for="public">
+      Profil public
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="visibility" id="private" value="private">
+    <label style="font-weight: normal;" class="form-check-label" for="private">
+      Profil privat
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Creeaza profil</button>
+</form>

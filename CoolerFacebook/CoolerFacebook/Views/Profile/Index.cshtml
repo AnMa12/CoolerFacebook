@@ -1,8 +1,28 @@
 ﻿
 @{
-    ViewBag.Title = "Profile";
+  ViewBag.Title = "Profile";
 }
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+</head>
 
-<h2>Profilul meu</h2>
+<h2 class="theme-color title-style">Profilul meu</h2>
+<hr />
 
-<div></div>
+<div class="center-icon no-profile-card">
+  <h3> Oops! </h3>
+  <i class='far fa-sad-tear icon-style'></i>
+  <h3 style="margin-top: 16px;">
+    Pare ca esti nou aici! Inca nu ai un profil.
+  </h3>
+  <h3>
+    Asta e sansa perfecta sa iti creezi unul, apasand pe butonul de mai jos!
+  </h3>
+  <a href="/Profile/New">
+    <button type="button"
+            class="btn btn-primary">
+      Creeaza-ti profilul
+    </button>
+  </a>
+</div>

@@ -14,6 +14,11 @@ namespace CoolerFacebook.Controllers
         {
             return View();
         }
-    }
 
+        // CREATE: Profile
+        public ActionResult New()
+        {
+            return View();
+        }
+    }
 }
