@@ -95,6 +95,29 @@ namespace CoolerFacebook.Controllers
             return View();
 
         }
+       /* public ActionResult AddComment(string Text)
+        {
+            var currentUserId = User.Identity.GetUserId();
+            ApplicationUser user = db.Users.Find(currentUserId);
+            //id photo
+            //Photo pic = db.Photos.Find(id);
+            Comment comment = new Comment(Text, pic, user);
+                 
+            try
+            {
+
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                //return RedirectToAction("ShowPhotos");
+                return Redirect("/Album/ShowPhotos/" + id);
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+
+        }*/
+
 
     }
 

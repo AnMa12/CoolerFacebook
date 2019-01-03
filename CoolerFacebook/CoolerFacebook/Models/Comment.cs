@@ -17,5 +17,15 @@ namespace CoolerFacebook.Models
 
         public virtual Photo Photo { get; set; }
         public virtual ApplicationUser Author { get; set; }
+
+        public Comment() { }
+        public Comment(string text, Photo pic , ApplicationUser user )
+        {
+            this.Text = text;
+            this.Date = DateTime.Now;
+            this.Photo = pic;
+            this.Author = user;
+
+        }
     }
 }
