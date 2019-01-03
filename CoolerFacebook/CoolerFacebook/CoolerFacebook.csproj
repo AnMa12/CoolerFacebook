@@ -276,6 +276,8 @@
     <Content Include="Views\Profile\New.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\New.cshtml" />
+    <Content Include="Views\Shared\AlbumListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

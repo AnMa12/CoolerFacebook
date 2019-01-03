@@ -1,8 +1,17 @@
 ﻿
 @{
-  ViewBag.Title = "Index";
+  ViewBag.Title = "Albums";
 }
 
-<h2 class="theme-color title-style">Albumele mele</h2>
-<hr />
+<div class="div-top-margin">
+  @foreach (var album in ViewBag.Albums)
+  {
+    <p>@album.Title</p>
+    <p>@album.Description</p>
+    <a href="/Album/Show/@album.AlbumId">Afisare album</a>
+    <br />
+    <hr />
+    <br />
+  }
+</div>
 

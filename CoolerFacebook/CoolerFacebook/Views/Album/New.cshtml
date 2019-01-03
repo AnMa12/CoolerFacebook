@@ -1,0 +1,21 @@
+﻿
+@{
+  ViewBag.Title = "New";
+}
+
+<h2 class="theme-color title-style">Creeaza un nou album</h2>
+<hr />
+
+<form method="post" action="/Album/New">
+  <div class="form-group">
+    <label for="lastName">Nume</label>
+    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Titlu"
+           name="Title">
+  </div>
+  <div class="form-group">
+    <label for="firstName">Prenume</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Descriere"
+           name="Description">
+  </div>
+  <button type="submit" class="btn btn-primary">Creeaza albumul</button>
+</form>

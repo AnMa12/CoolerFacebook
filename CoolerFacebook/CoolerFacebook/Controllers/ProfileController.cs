@@ -18,10 +18,8 @@ namespace CoolerFacebook.Controllers
         {
             //AICI TREBUIE IN FUNCTIE DE USER SA LUAM ID-UL PROFILULUI!!!
             var currentUserId = User.Identity.GetUserId();
-            
             Profile profile = db.Profiles.Where( i => i.User.Id == currentUserId).FirstOrDefault();
             ViewBag.Profile = profile;
-
             if (TempData.ContainsKey("message"))
             {
                 ViewBag.message = TempData["message"].ToString();
