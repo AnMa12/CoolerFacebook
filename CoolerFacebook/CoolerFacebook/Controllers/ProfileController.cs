@@ -25,6 +25,8 @@ namespace CoolerFacebook.Controllers
                 ViewBag.message = TempData["message"].ToString();
             }
 
+            ViewBag.Albums = profile.Albums;
+            
             return View();
         }
 

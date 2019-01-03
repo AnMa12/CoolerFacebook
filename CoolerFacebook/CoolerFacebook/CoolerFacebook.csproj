@@ -278,6 +278,8 @@
     <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Album\New.cshtml" />
     <Content Include="Views\Shared\AlbumListPartial.cshtml" />
+    <Content Include="Views\Album\Add.cshtml" />
+    <Content Include="Views\Album\ShowPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

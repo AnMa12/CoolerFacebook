@@ -16,5 +16,15 @@ namespace CoolerFacebook.Models
 
         public virtual Album Album { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public Photo() { }
+        public Photo(String path)
+        {
+            this.Path = path;
+        }
+        public Photo(String path, Album albm)
+        {
+            this.Path = path;
+            this.Album = albm;
+        }
     }
 }

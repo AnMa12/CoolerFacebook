@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,14 +49,80 @@ namespace CoolerFacebook.Controllers
                 album.Profile = profile;
                 db.Albums.Add(album);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Profile");
             }
             catch (Exception e)
             {
                 return View();
             }
         }
+
+        public ActionResult Add(int Id)
+        {
+            ViewBag.AlbumId = Id;
+               
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Add(HttpPostedFileBase file, string AlbumId)
+        {
+            int id = int.Parse(AlbumId);
+            var album = db.Albums.Find(id);
+            var path = FilesHandler.saveImage(file, Server);
+            Photo img = new Photo(path, album);
+            try
+            {
+
+                db.Photos.Add(img);
+                db.SaveChanges();
+                //return RedirectToAction("ShowPhotos");
+                return Redirect("/Album/ShowPhotos/" + id);
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ShowPhotos(int Id)
+        {
+
+            var album = db.Albums.Find(Id);
+            ViewBag.album = album;
+            ViewBag.pics = album.Photos;
+            return View();
+
+        }
+
     }
 
+    public class FilesHandler
+    {
+        public static String aplicationPath = "~/Content";
+        public static String relativeFolder = Path.GetFileName("Images");
+        public static String saveImage(HttpPostedFileBase picture, HttpServerUtilityBase server)
+        {
 
+            string subPath = Path.Combine(server.MapPath(aplicationPath), relativeFolder);
+            if (!System.IO.Directory.Exists(subPath))
+                System.IO.Directory.CreateDirectory(subPath);
+
+            string fullPath = Path.Combine(subPath, Path.GetFileName(picture.FileName));
+            try
+            {
+                picture.SaveAs(fullPath);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            string relativePath = "/Content/" + "Images/" + picture.FileName;
+            return relativePath;
+        }
+    }
 }
+
+

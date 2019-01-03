@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "ShowPhotos";
+}
+
+<h2>Show</h2>
+<h4>@ViewBag.album.Title</h4>
+
+@foreach (var pic in ViewBag.pics)
+{
+    <img src=@pic.Path alt="Smiley face" height="300" width="300">
+    <br />
+    <hr />
+}
