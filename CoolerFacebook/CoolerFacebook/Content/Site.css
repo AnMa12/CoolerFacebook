@@ -45,6 +45,10 @@ textarea {
   padding-bottom: 21px;
 }
 
+.margin-bottom {
+  margin-bottom: 15px;
+}
+
 .title-style {
   font-weight: bold;
 }

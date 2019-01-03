@@ -16,6 +16,13 @@ namespace CoolerFacebook.Controllers
         // GET: Profile
         public ActionResult Index()
         {
+            //AICI TREBUIE IN FUNCTIE DE USER SA LUAM ID-UL PROFILULUI!!!
+            var currentUserId = User.Identity.GetUserId();
+            //acum avem id-ul user-ului trebuie sa parcurgem toata lista 
+            //de profiles si sa luam profilul care are id-ul currentUserId
+            var currentProfileId = 6;
+            Profile profile = db.Profiles.Find(currentProfileId);
+            ViewBag.Profile = profile;
             return View();
         }
 
@@ -48,6 +55,27 @@ namespace CoolerFacebook.Controllers
             Profile profile = db.Profiles.Find(ProfileId);
             ViewBag.Profile = profile;
             return View();
+        }
+
+        [HttpPut]
+        public ActionResult Edit(int ProfileId, Profile requestProfile)
+        {
+            try
+            {
+                Profile profile = db.Profiles.Find(ProfileId);
+                if (TryUpdateModel(profile))
+                {
+                    profile.FirstName = requestProfile.FirstName;
+                    profile.LastName = requestProfile.LastName;
+                    profile.Description = requestProfile.Description;
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
         }
     }
 }

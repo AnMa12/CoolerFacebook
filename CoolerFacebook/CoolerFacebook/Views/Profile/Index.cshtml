@@ -1,5 +1,7 @@
 ﻿
 @{
+  /**/
+
   ViewBag.Title = "Profile";
 }
 <head>
@@ -10,29 +12,76 @@
 <h2 class="theme-color title-style">Profilul meu</h2>
 <hr />
 
-<div class="center-icon no-profile-card">
-  <h3> Oops! </h3>
-  <i class='far fa-sad-tear icon-style'></i>
-  <h3 style="margin-top: 16px;">
-    Pare ca esti nou aici! Inca nu ai un profil.
-  </h3>
-  <h3>
-    Asta e sansa perfecta sa iti creezi unul, apasand pe butonul de mai jos!
-  </h3>
-  <a href="/Profile/New">
-    <button type="button"
-            class="btn btn-primary">
-      Creeaza profilul
-    </button>
-  </a>
-</div>
+@if (ViewBag.Profile == null)
+{
+  <div class="center-icon no-profile-card">
+    <h3> Oops! </h3>
+    <i class='far fa-sad-tear icon-style'></i>
+    <h3 style="margin-top: 16px;">
+      Pare ca esti nou aici! Inca nu ai un profil.
+    </h3>
+    <h3>
+      Asta e sansa perfecta sa iti creezi unul, apasand pe butonul de mai jos!
+    </h3>
+    <a href="/Profile/New">
+      <button type="button"
+              class="btn btn-primary">
+        Creeaza profilul
+      </button>
+    </a>
+  </div>
+}
+else
+{
+  <div class="row">
+    <div class="col-md-3" style="border: 1px gray dotted; background-color:lightgray; border-radius:15px; height:300px">
 
-@*Aici trebuie pus un if sus daca nu ai profil sa 
-  apara aia, iar daca ai sa apara ce e mai jos*@
-
-@*<a href="/Profile/Edit">
-  <button type="button"
-          class="btn btn-primary">
-    Editeaza profilul
-  </button>
-</a>*@
+    </div>
+    <div class="col-md-6">
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Prenume
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.FirstName
+          </div>
+        </div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Nume
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.LastName
+          </div>
+        </div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Descriere
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.Description
+          </div>
+        </div>
+      </div>
+      <a href="/Profile/Edit/@ViewBag.Profile.ProfileId">
+        <button type="button"
+                class="btn btn-primary margin-bottom">
+          Editeaza profilul
+        </button>
+      </a>
+    </div>
+  </div>
+  <h2 class="theme-color title-style">Albumele mele</h2>
+  <hr />
+}
