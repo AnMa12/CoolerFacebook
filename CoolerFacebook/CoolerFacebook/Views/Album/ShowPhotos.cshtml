@@ -1,13 +1,30 @@
 ﻿@{
-    ViewBag.Title = "ShowPhotos";
+  ViewBag.Title = "ShowPhotos";
 }
 
-<h2>Show</h2>
-<h4>@ViewBag.album.Title</h4>
+<h2 class="theme-color title-style">Titlu album: @ViewBag.album.Title</h2>
+<h4 class="theme-color title-style">Descriere: @ViewBag.album.Description</h4>
 
 @foreach (var pic in ViewBag.pics)
 {
-    <img src=@pic.Path alt="Smiley face" height="300" width="300">
-    <br />
-    <hr />
+  <div class="row">
+    <div class="col-md-4">
+      <img src=@pic.Path alt="Smiley face" style="border-radius: 25px;" height="400" width="400">
+    </div>
+    <div class="col-md-8">
+      <div class="center-icon no-profile-card" style="height: 400px">
+        <form>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+        </form>
+        <button type="button"
+                class="btn btn-primary">
+          Adauga comentariu
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr />
 }
