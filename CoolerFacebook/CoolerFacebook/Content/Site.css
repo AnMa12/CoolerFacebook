@@ -28,12 +28,14 @@ textarea {
 }
 
 .icon-style {
-  font-size: 90px;
+  font-size: 80px;
   color: #337ab7;
 }
 
 .div-top-margin {
   margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .col-pagination {
@@ -41,5 +43,5 @@ textarea {
 }
 
 .btn-height-90 {
-  height: 90px;
+  height: 70px;
 }
