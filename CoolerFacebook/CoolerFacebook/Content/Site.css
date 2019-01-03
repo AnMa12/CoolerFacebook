@@ -18,8 +18,7 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select {
   max-width: 280px;
 }
 
@@ -39,16 +38,20 @@ textarea {
 }
 
 .no-profile-card {
-  border: 5px #337ab7 solid;
-  border-radius: 25px;
+  border: 3px #337ab7 solid;
+  border-radius: 15px;
   margin: 0px 75px;
   padding-bottom: 21px;
 }
 
-.border-cooler-facebook {
-  border: 5px #337ab7 solid;
-  border-radius: 25px;
-  padding-bottom: 21px;
+.left-radius-photo {
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
+}
+
+.cooler-facebook-border {
+  border: 3px #337ab7 solid;
+  border-radius: 15px;
 }
 
 .margin-bottom {

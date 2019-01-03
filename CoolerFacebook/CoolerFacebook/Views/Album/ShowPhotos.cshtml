@@ -7,19 +7,37 @@
 
 @foreach (var pic in ViewBag.pics)
 {
-  <div class="row">
-    <div class="col-md-4">
-      <img src=@pic.Path alt="Smiley face" style="border-radius: 25px;" height="400" width="400">
+  <div class="row cooler-facebook-border">
+    <div class="col-md-4" style="padding-left: 0px">
+      <img src=@pic.Path alt="Smiley face" class="left-radius-photo" height="400" width="400">
     </div>
-    <div class="col-md-8">
-      <div class="center-icon no-profile-card" style="height: 400px">
+    <div class="center-icon col-md-8" style="padding-left: 30px; height: 400px">
+      <div style="height: 350px">
+        <ul class="list-group" style="max-height: 340px; margin-top: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Morbi leo risus</li>
+          <li class="list-group-item">Porta ac consectetur ac</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+      <div style="height: 50px">
         <form>
-          <div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
+          <div style="float: left; width: 77%;" class="form-group">
+            <textarea class="form-control" rows="1" id="comment"></textarea>
           </div>
         </form>
-        <button type="button"
+        <button style="float: right;" type="button"
                 class="btn btn-primary">
           Adauga comentariu
         </button>
