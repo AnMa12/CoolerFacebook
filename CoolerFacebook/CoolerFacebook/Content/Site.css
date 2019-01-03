@@ -45,6 +45,12 @@ textarea {
   padding-bottom: 21px;
 }
 
+.border-cooler-facebook {
+  border: 5px #337ab7 solid;
+  border-radius: 25px;
+  padding-bottom: 21px;
+}
+
 .margin-bottom {
   margin-bottom: 15px;
 }
