@@ -24,9 +24,18 @@ namespace CoolerFacebook.Controllers
             {
                 ViewBag.message = TempData["message"].ToString();
             }
-
+            if (profile != null)
             ViewBag.Albums = profile.Albums;
-            
+            return View();
+        }
+
+        // GET: Profile by profileId
+        public ActionResult Show(int id)
+        {
+            Profile profile = db.Profiles.Find(id);
+            ViewBag.Profile = profile;
+            if (profile != null)
+            ViewBag.Albums = profile.Albums;
             return View();
         }
 
@@ -73,8 +82,6 @@ namespace CoolerFacebook.Controllers
                 if (TryUpdateModel(profile))
                 {
                     TempData["message"] = "S-a modificat " + profile.FirstName;
-                        
-
                     profile.FirstName = requestProfile.FirstName;
                     profile.LastName = requestProfile.LastName;
                     profile.Description = "lavinia";
