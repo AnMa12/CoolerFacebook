@@ -125,7 +125,7 @@ namespace CoolerFacebook.Controllers
             Comment comment = db.Comments.Find(id);
             var currentUserId = User.Identity.GetUserId();
             ApplicationUser user = db.Users.Find(currentUserId);
-            Photo pic = db.Photos.Find(id);
+            Photo pic = comment.Photo;
             if (comment != null)
             {
                 db.Comments.Remove(comment);
@@ -135,17 +135,26 @@ namespace CoolerFacebook.Controllers
             return Redirect("/Album/ShowPhotos/" + pic.Album.AlbumId);
         }
 
-        [HttpDelete]
+        /*[HttpDelete]
         public ActionResult Delete(int id)
         {
             Album album = db.Albums.Find(id);
+            
             if (album != null)
             {
+                foreach(Photo pic in album.Photos.ToList())
+                {
+                    
+                    db.Photos.Remove(pic);
+
+
+                }
                 db.Albums.Remove(album);
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Profile");
         }
+        */
     }
 
     public class FilesHandler
