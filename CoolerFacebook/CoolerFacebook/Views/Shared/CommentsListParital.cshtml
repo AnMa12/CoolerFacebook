@@ -5,8 +5,23 @@
     </div>
   </div>
   <div class="panel panel-default col-md-9">
-    <div class="panel-heading">
-      <strong>@Model.Author.UserName</strong> <span class="text-muted">commented on @Model.Date</span>
+    <div class="panel-heading"
+         style="margin-left: -3%;
+                width: 106%;">
+      <strong>@Model.Author.UserName</strong>
+      <form method="post" action="/Album/DeleteComment/@Model.CommentId">
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button type="submit" class="btn btn-primary"
+                style="float: right;
+                     height: 24px;
+                     width: 24px;
+                     padding-left: 7px;
+                     padding-top: 4px;
+                     font-size: 12px;">
+          X
+        </button>
+        </form>
+        <span class="text-muted">commented on @Model.Date</span>
     </div>
     <div class="panel-body">
       @Model.Text

@@ -1,14 +1,24 @@
-﻿<p>@Model.Title</p>
-<p>@Model.Description</p>
+﻿<p><strong>Title: </strong>@Model.Title</p>
+<p><strong>Description: </strong>@Model.Description</p>
 <a href="/Album/Add/@Model.AlbumId">
     <button type="button"
-            class="btn btn-primary">
+            class="btn btn-primary"
+            style="margin-bottom: 6px">
         Adauga o fotografie noua
     </button>
 </a>
 <a href="/Album/ShowPhotos/@Model.AlbumId">
   <button type="button"
-          class="btn btn-primary">
+          class="btn btn-primary"
+          style="margin-bottom: 6px">
     Vizualizeaza album
   </button>
 </a>
+<br/>
+<form method="post" action="/Album/Delete/@Model.AlbumId">
+  @Html.HttpMethodOverride(HttpVerbs.Delete)
+  <button type="submit"
+          class="btn btn-primary">
+    Sterge album
+  </button>
+</form>
