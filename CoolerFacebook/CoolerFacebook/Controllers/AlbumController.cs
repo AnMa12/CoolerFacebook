@@ -88,12 +88,10 @@ namespace CoolerFacebook.Controllers
 
         public ActionResult ShowPhotos(int Id)
         {
-
             var album = db.Albums.Find(Id);
             ViewBag.album = album;
             ViewBag.pics = album.Photos;
             return View();
-
         }
 
         [HttpPost]
