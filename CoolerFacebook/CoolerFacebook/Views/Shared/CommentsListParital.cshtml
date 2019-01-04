@@ -9,6 +9,7 @@
          style="margin-left: -3%;
                 width: 106%;">
       <strong>@Model.Author.UserName</strong>
+
       <form method="post" action="/Album/DeleteComment/@Model.CommentId">
         @Html.HttpMethodOverride(HttpVerbs.Delete)
         <button type="submit" class="btn btn-primary"

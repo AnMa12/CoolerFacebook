@@ -9,32 +9,36 @@
 
 @foreach (var pic in ViewBag.pics)
 {
-<form action="/Album/AddComment" method="post">
-  <input type="hidden" name="id" value="@pic.PhotoId" id="id" />
+
+  
   <div class="row cooler-facebook-border">
     <div class="col-md-4" style="padding-left: 0px">
       <img src=@pic.Path alt="Smiley face" class="left-radius-photo" height="400" width="400">
     </div>
     <div class="center-icon col-md-8" style="padding-left: 30px; height: 400px">
-      <div style="height: 350px">
-        <ul class="list-group comments-scrolling">
-          @foreach (CoolerFacebook.Models.Comment comment in pic.Comments)
-          {
-            @Html.Partial("CommentsListParital", comment)
-          }
-        </ul>
-      </div>
-      <div style="height: 50px">
-        <div style="float: left; width: 77%;" class="form-group">
-          <textarea class="form-control" rows="1" id="text" name="text"></textarea>
+        <div style="height: 350px">
+            <ul class="list-group comments-scrolling">
+                @foreach (CoolerFacebook.Models.Comment comment in pic.Comments)
+                {
+                    @Html.Partial("CommentsListParital", comment)
+                }
+            </ul>
         </div>
-        <button style="float: right;" type="submit"
-                class="btn btn-primary">
-          Adauga comentariu
-        </button>
-      </div>
+        <form action="/Album/AddComment" method="post">
+            <input type="hidden" name="id" value="@pic.PhotoId" id="id" />
+            <div style="height: 50px">
+                <div style="float: left; width: 77%;" class="form-group">
+                    <textarea class="form-control" rows="1" id="text" name="text"></textarea>
+                </div>
+
+                <button style="float: right;" type="submit"
+                        class="btn btn-primary">
+                    Adauga comentariu
+                </button>
+            </div>
+        </form>
     </div>
   </div>
-</form>
+
   <hr />
 }
