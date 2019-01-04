@@ -1,6 +1,6 @@
 ﻿
 @{
-  ViewBag.Title = "Freinds";
+  ViewBag.Title = "Friends";
 }
 
 <h2 class="theme-color title-style">Prietenii mei</h2>
@@ -15,6 +15,38 @@
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..sss.</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">..sssss.</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        
+        @if (ViewBag.friends != null)
+        {
+            foreach (var fr in ViewBag.friends)
+            {
+                <p>@fr.Friend2.LastName</p>
+                <p>@fr.Friend2.FirstName</p>
+                <hr />
+            }
+        }
+        else
+        {
+            <p>Nu aveti prieteeeeeeeeeeeni </p>
+        }
+    </div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        @if (ViewBag.friendRequests != null)
+        {
+            foreach (var fr in ViewBag.friendRequests)
+            {
+                <p>@fr.Sender.LastName</p>
+                <p>@fr.Sender.FirstName</p>
+                <form action="/Profile/Show/@fr.Sender.ProfileId" method="post">
+                    <button type="submit" class="btn btn-primary">Vezi profil</button>
+                </form>
+                <hr />
+            }
+        }
+        else
+        {
+            <p>Nu aveti cereriiiiiiiiiiii </p>
+        }
+    </div>
 </div>

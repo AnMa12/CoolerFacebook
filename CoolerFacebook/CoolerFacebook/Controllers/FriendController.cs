@@ -11,13 +11,22 @@ namespace CoolerFacebook.Controllers
     public class FriendController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+
         // GET: Friend
         public ActionResult Index()
         {
+            var currentUserId = User.Identity.GetUserId();
+            Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
+
             var friends = from friend in db.Friends
-                         select friend;
-            ViewBag.Friends = friends;
+                          where friend.Friend1.ProfileId == currentProfile.ProfileId
+                          select friend;
+            ViewBag.friends = friends;
+
+            var requests = from fr in db.FriendRequests
+                           where fr.Receiver.ProfileId == currentProfile.ProfileId
+                           select fr;
+            ViewBag.friendRequests = requests;
             return View();
         }
 
@@ -65,11 +74,13 @@ namespace CoolerFacebook.Controllers
             {
                 if(friendsRequest != null)
                 {
-                    db.FriendRequests.Remove(friendsRequest);
+                    db.FriendRequests.Remove(friendsRequest);
+
                 }
                 if (friendsRequest2 != null)
                 {
-                    db.FriendRequests.Remove(friendsRequest2);
+                    db.FriendRequests.Remove(friendsRequest2);
+
                 }
                 db.Friends.Add(fr1);
                 db.Friends.Add(fr2);
