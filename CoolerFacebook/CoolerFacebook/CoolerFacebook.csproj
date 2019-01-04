@@ -280,6 +280,9 @@
     <Content Include="Views\Shared\AlbumListPartial.cshtml" />
     <Content Include="Views\Album\Add.cshtml" />
     <Content Include="Views\Album\ShowPhotos.cshtml" />
+    <Content Include="Views\Profile\Show.cshtml" />
+    <Content Include="Views\Shared\AlbumListShowPartial.cshtml" />
+    <Content Include="Views\Shared\CommentsListParital.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
