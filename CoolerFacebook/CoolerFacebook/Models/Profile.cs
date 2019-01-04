@@ -14,7 +14,7 @@ namespace CoolerFacebook.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-        public bool Visibility { get; set; }
+        public string Visibility { get; set; }
         public string Description { get; set; }
         public string Path { get; set; }
         //colectie albume

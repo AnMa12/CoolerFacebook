@@ -23,42 +23,83 @@ else
 
     </div>
     <div class="col-md-6">
-      <div class="row margin-bottom">
-        <div class="col-sm-4">
-          <div class="list-group-item">
-            Prenume
-          </div>
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <div class="list-group-item">
+                    Prenume
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="list-group-item">
+                    @ViewBag.Profile.FirstName
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-          <div class="list-group-item">
-            @ViewBag.Profile.FirstName
-          </div>
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <div class="list-group-item">
+                    Nume
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="list-group-item">
+                    @ViewBag.Profile.LastName
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row margin-bottom">
-        <div class="col-sm-4">
-          <div class="list-group-item">
-            Nume
-          </div>
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <div class="list-group-item">
+                    Descriere
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="list-group-item">
+                    @ViewBag.Profile.Description
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-          <div class="list-group-item">
-            @ViewBag.Profile.LastName
-          </div>
+        @if(@ViewBag.friend == "Anuleaza")
+        {
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <form action="/Friend/CancelRequest/@ViewBag.profile.ProfileId" method="post">
+                    <button type="submit" class="btn btn-primary">Anuleaza</button>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="row margin-bottom">
-        <div class="col-sm-4">
-          <div class="list-group-item">
-            Descriere
-          </div>
+        }
+        @if(@ViewBag.friend == "Accepta")
+        {
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <form action="/Friend/AddFriend/@ViewBag.profile.ProfileId" method="post">
+                    <button type="submit" class="btn btn-primary">Accepta</button>
+                </form>
+            </div>
         </div>
-        <div class="col-sm-6">
-          <div class="list-group-item">
-            @ViewBag.Profile.Description
-          </div>
+        }
+
+        @if(@ViewBag.friend == "Unfriend")
+        {
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <form action="/Friend/AddRequest/@ViewBag.profile.ProfileId" method="post">
+                    <button type="submit" class="btn btn-primary">Adauga </button>
+                </form>
+            </div>
         </div>
-      </div>
+        }
+        @if (@ViewBag.friend == "Friend")
+        {
+        <div class="row margin-bottom">
+            <div class="col-sm-4">
+                <form action="/Friend/DeleteFriend/@ViewBag.profile.ProfileId" method="post">
+                    <button type="submit" class="btn btn-primary">Sterge</button>
+                </form>
+            </div>
+        </div>
+        }
     </div>
   </div>
   <h1>@ViewBag.message</h1>

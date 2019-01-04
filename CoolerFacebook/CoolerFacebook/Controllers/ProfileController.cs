@@ -36,6 +36,41 @@ namespace CoolerFacebook.Controllers
             ViewBag.Profile = profile;
             if (profile != null)
             ViewBag.Albums = profile.Albums;
+
+            var currentUserId = User.Identity.GetUserId();
+            Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
+
+
+            FriendRequest friendsRequest = (from fr in db.FriendRequests
+                              where fr.Sender.ProfileId == currentProfile.ProfileId && fr.Receiver.ProfileId == profile.ProfileId
+                              select fr).FirstOrDefault();
+
+            FriendRequest friendsRequest2 = (from fr in db.FriendRequests
+                                            where fr.Sender.ProfileId == profile.ProfileId && fr.Receiver.ProfileId == currentProfile.ProfileId
+                                             select fr).FirstOrDefault();
+            Friend friends = (from friend in db.Friends
+                              where friend.Friend1.ProfileId == currentProfile.ProfileId && friend.Friend2.ProfileId == profile.ProfileId
+                              select friend).FirstOrDefault();
+
+            if (friendsRequest != null)
+            {
+                ViewBag.friend = "Anuleaza";
+            }
+            else
+            if(friendsRequest2 != null)
+            {
+                ViewBag.friend = "Accepta";
+            }
+             else 
+            if (friends == null)
+                {
+                    ViewBag.friend = "Unfriend";
+                }
+                else
+                {
+                    ViewBag.friend = "Friend";
+                }
+            
             return View();
         }
 
