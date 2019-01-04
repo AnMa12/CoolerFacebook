@@ -288,6 +288,7 @@
     <Content Include="Views\Shared\CommentsListParital.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Friend\SearchFriend.cshtml" />
+    <Content Include="Views\Shared\ProfileListShowPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,39 +1,46 @@
 ﻿@{
-    ViewBag.Title = "SearchFriend";
+  ViewBag.Title = "SearchFriend";
 }
 
 <h1> Cauta prieteni </h1>
 <form action="/Friend/SearchFriend" method="get">
-    <div class="form-group">
-        <label for="lastName">Nume</label>
-        <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume"
-               name="lastName">
-    </div>
-    <div class="form-group">
-        <label for="firstName">Prenume</label>
-        <input type="text" class="form-control" id="firstName" placeholder="Prenume"
-               name="firstName">
-    </div>
-    <button type="submit" class="btn btn-primary">Cautare</button>
+  <div class="form-group">
+    <label for="lastName">Nume</label>
+    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume"
+           name="lastName">
+  </div>
+  <div class="form-group">
+    <label for="firstName">Prenume</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Prenume"
+           name="firstName">
+  </div>
+  <button type="submit" class="btn btn-primary">Cautare</button>
 </form>
 
 @if (ViewBag.profiles != null)
 {
-    foreach (var prf in ViewBag.profiles)
+  foreach (var prf in ViewBag.profiles)
+  {
+    if (@prf.Visibility == "public")
     {
-        if (@prf.Visibility == "public")
-        {
-            <p>@prf.LastName</p>
-            <p>@prf.FirstName</p>
-            <p>@prf.Path</p>
-            
-            <form action="/Profile/Show/@prf.ProfileId" method="post">
-                <button type="submit" class="btn btn-primary">Vezi profil</button>
-            </form>
-            <hr />
-        }
+      <p>@prf.LastName</p>
+      <p>@prf.FirstName</p>
+      <p>@prf.Path</p>
 
-
+      <form action="/Profile/Show/@prf.ProfileId" method="post">
+        <button type="submit" class="btn btn-primary">Vezi profil</button>
+      </form>
+      <hr />
     }
+  }
 }
+
+@*@if (ViewBag.Profiles != null)
+{
+  foreach (CoolerFacebook.Models.Profile profile in ViewBag.Profiles)
+  {
+    @Html.Partial("ProfileListShowPartial", profile)
+  }
+}*@
+
 

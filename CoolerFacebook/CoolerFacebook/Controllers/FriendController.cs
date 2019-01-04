@@ -138,7 +138,8 @@ namespace CoolerFacebook.Controllers
         {
             var currentUserId = User.Identity.GetUserId();
             Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
-
+            //ViewBag.Profiles = from profile in db.Profiles
+            //                   select profile;
             if (lastName != null && firstName != null)
             {
                 if(lastName != "" && firstName != "")

@@ -1,0 +1,22 @@
+﻿<p>@Model.FirstName</p>
+<p>@Model.LastName</p>
+<a href="/Profile/Show/@Model.ProfileId">
+  <button type="button"
+          class="btn btn-primary">
+    Vizualizeaza profil
+  </button>
+</a>
+@*foreach (var prf in ViewBag.profiles)
+  {
+    if (@prf.Visibility == "public")
+    {
+      <p>@prf.LastName</p>
+      <p>@prf.FirstName</p>
+      <p>@prf.Path</p>
+
+      <form action="/Profile/Show/@prf.ProfileId" method="post">
+        <button type="submit" class="btn btn-primary">Vezi profil</button>
+      </form>
+      <hr />
+    }
+  }*@
