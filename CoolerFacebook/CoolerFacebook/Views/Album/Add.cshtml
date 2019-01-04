@@ -1,31 +1,36 @@
 ﻿@model CoolerFacebook.Models.Photo
 
 @{
-    ViewBag.Title = "Add";
+  ViewBag.Title = "Add";
 }
 
-<h2>Create</h2>
+<h2 class="theme-color title-style">Adauga o noua fotografie in album</h2>
+<hr />
+
 @using (Html.BeginForm("Add", "Album", null, FormMethod.Post,
                               new { enctype = "multipart/form-data" }))
 {
-<input type="hidden" name="AlbumId" value="@ViewBag.AlbumId" />
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Image</legend>
-        <div class="editor-label">
-
-        </div>
-        <div class="editor-field">
-            <input id="Path" title="Upload a product image"
-                   type="file" name="file" />
-        </div>
-        <p><input type="submit" value="Add" /></p>
-    </fieldset>
+  <input type="hidden" name="AlbumId" value="@ViewBag.AlbumId" />
+  @Html.AntiForgeryToken()
+  @Html.ValidationSummary(true)
+  <fieldset>
+    <h4><strong>Pas 1:</strong> Alege fotografia</h4>
+    <div class="editor-field">
+      <input id="Path" title="Upload a product image"
+             type="file" name="file" />
+    </div>
+    <hr />
+    <div>
+      <h4><strong>Pas 2:</strong> Incarca fotografia in album</h4>
+      <button type="submit" value="Add" class="btn btn-primary">
+        Adauga fotografia
+      </button>
+    </div>
+  </fieldset>
 }
 <div>
 
 </div>
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  @Scripts.Render("~/bundles/jqueryval")
 }
