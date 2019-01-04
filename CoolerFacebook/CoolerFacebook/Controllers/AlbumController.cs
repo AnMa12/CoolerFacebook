@@ -17,8 +17,8 @@ namespace CoolerFacebook.Controllers
         public ActionResult Index()
         {
             var albums = from album in db.Albums
-                           orderby album.Title
-                           select album;
+                         orderby album.Title
+                         select album;
             ViewBag.Albums = albums;
             return View();
         }
@@ -60,7 +60,7 @@ namespace CoolerFacebook.Controllers
         public ActionResult Add(int Id)
         {
             ViewBag.AlbumId = Id;
-               
+
             return View();
         }
 
@@ -97,13 +97,13 @@ namespace CoolerFacebook.Controllers
         [HttpPost]
         public ActionResult AddComment(int id, string text)
         {
-            
+
             var currentUserId = User.Identity.GetUserId();
             ApplicationUser user = db.Users.Find(currentUserId);
-            
+
             Photo pic = db.Photos.Find(id);
             Comment comment = new Comment(text, pic, user);
-                 
+
             try
             {
 
@@ -117,11 +117,35 @@ namespace CoolerFacebook.Controllers
             {
                 return View("New");
             }
-            
-
         }
 
+        [HttpDelete]
+        public ActionResult DeleteComment(int id)
+        {
+            Comment comment = db.Comments.Find(id);
+            var currentUserId = User.Identity.GetUserId();
+            ApplicationUser user = db.Users.Find(currentUserId);
+            Photo pic = db.Photos.Find(id);
+            if (comment != null)
+            {
+                db.Comments.Remove(comment);
+                db.SaveChanges();
 
+            }
+            return Redirect("/Album/ShowPhotos/" + pic.Album.AlbumId);
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Album album = db.Albums.Find(id);
+            if (album != null)
+            {
+                db.Albums.Remove(album);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", "Profile");
+        }
     }
 
     public class FilesHandler
@@ -150,9 +174,9 @@ namespace CoolerFacebook.Controllers
         }
     }
 
-    
 
-     
+
+
 }
 
 

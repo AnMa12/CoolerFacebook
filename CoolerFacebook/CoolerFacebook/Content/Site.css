@@ -54,6 +54,14 @@ select {
   border-radius: 15px;
 }
 
+.cooler-facebook-border-margin {
+  border: 3px #337ab7 solid;
+  border-radius: 15px;
+  width: 371px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
 .margin-bottom {
   margin-bottom: 15px;
 }
