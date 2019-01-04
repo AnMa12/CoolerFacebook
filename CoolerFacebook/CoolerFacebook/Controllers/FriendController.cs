@@ -164,22 +164,24 @@ namespace CoolerFacebook.Controllers
                                    select profile;
                     ViewBag.profiles = profiles;
                 }
-                
-                
-                foreach (var prf in ViewBag.profiles)
+
+                if (ViewBag.profiles != null)
                 {
-                    Profile friendProfile = db.Profiles.Find(prf.ProfileId);
-                   Friend friends = (from friend in db.Friends
-                                  where friend.Friend1.ProfileId == currentProfile.ProfileId && friend.Friend2.ProfileId == friendProfile.ProfileId
-                                  select friend).FirstOrDefault();
-                    
-                    if (friends == null)
+                    foreach (var prf in ViewBag.profiles)
                     {
-                        prf.Path = "Unfriend";
-                    }
-                    else
-                    {
-                        prf.Path = "Friend";
+                        Profile friendProfile = db.Profiles.Find(prf.ProfileId);
+                        Friend friends = (from friend in db.Friends
+                                          where friend.Friend1.ProfileId == currentProfile.ProfileId && friend.Friend2.ProfileId == friendProfile.ProfileId
+                                          select friend).FirstOrDefault();
+
+                        if (friends == null)
+                        {
+                            prf.Path = "Unfriend";
+                        }
+                        else
+                        {
+                            prf.Path = "Friend";
+                        }
                     }
                 }
 
