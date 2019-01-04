@@ -97,13 +97,14 @@ namespace CoolerFacebook.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddComment( string Text)
+        public ActionResult AddComment(int id, string text)
         {
-           /* var currentUserId = User.Identity.GetUserId();
+            
+            var currentUserId = User.Identity.GetUserId();
             ApplicationUser user = db.Users.Find(currentUserId);
-            int id = int.Parse(PhotoId);
+            
             Photo pic = db.Photos.Find(id);
-            Comment comment = new Comment("lavinia", pic, user);
+            Comment comment = new Comment(text, pic, user);
                  
             try
             {
@@ -117,8 +118,8 @@ namespace CoolerFacebook.Controllers
             catch (Exception e)
             {
                 return View("New");
-            }*/
-            return View("New");
+            }
+            
 
         }
 
@@ -150,6 +151,10 @@ namespace CoolerFacebook.Controllers
             return relativePath;
         }
     }
+
+    
+
+     
 }
 
 

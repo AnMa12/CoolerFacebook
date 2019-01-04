@@ -1,5 +1,6 @@
-﻿@{
-  ViewBag.Title = "ShowPhotos";
+﻿@model CoolerFacebook.Models.TextAreaProperty
+@{
+    ViewBag.Title = "ShowPhotos";
 }
 
 <h2 class="theme-color title-style">Titlu album: @ViewBag.album.Title</h2>
@@ -7,42 +8,48 @@
 
 @foreach (var pic in ViewBag.pics)
 {
-  <div class="row cooler-facebook-border">
-    <div class="col-md-4" style="padding-left: 0px">
-      <img src=@pic.Path alt="Smiley face" class="left-radius-photo" height="400" width="400">
-    </div>
-    <div class="center-icon col-md-8" style="padding-left: 30px; height: 400px">
-      <div style="height: 350px">
-        <ul class="list-group" style="max-height: 340px; margin-top: 10px;
+    <form action="/Album/AddComment" method="post">
+        <input type="hidden" name="id" value="@pic.PhotoId" id="id"/>
+        <div class="row cooler-facebook-border">
+            <div class="col-md-4" style="padding-left: 0px">
+                <img src=@pic.Path alt="Smiley face" class="left-radius-photo" height="400" width="400">
+            </div>
+            <div class="center-icon col-md-8" style="padding-left: 30px; height: 400px">
+                <div style="height: 350px">
+                    <ul class="list-group" style="max-height: 340px; margin-top: 10px;
     overflow:scroll;
     -webkit-overflow-scrolling: touch;">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Morbi leo risus</li>
-          <li class="list-group-item">Porta ac consectetur ac</li>
-          <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-      </div>
-      <div style="height: 50px">
-        <form>
-          <div style="float: left; width: 77%;" class="form-group">
-            <textarea class="form-control" rows="1" id="comment"></textarea>
-          </div>
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+                <div style="height: 50px">
+                    
+                        <div style="float: left; width: 77%;" class="form-group">
+                            <textarea class="form-control" rows="1" id="text" name="text"></textarea>
+                        </div>
+                    
+
+                    
+                        <button style="float: right;" type="submit"
+                                class="btn btn-primary">
+                            Adauga comentariu
+                        </button>
+                   
+                </div>
+            </div>
+        </div>
         </form>
-        <button style="float: right;" type="button"
-                class="btn btn-primary">
-          Adauga comentariu
-        </button>
-      </div>
-    </div>
-  </div>
-  <hr />
-}
+        <hr />
+        }
