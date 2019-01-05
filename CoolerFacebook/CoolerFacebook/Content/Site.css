@@ -38,8 +38,8 @@ select {
 }
 
 .no-profile-card {
-  border: 3px #337ab7 solid;
-  border-radius: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin: 0px 75px;
   padding-bottom: 21px;
 }
@@ -50,13 +50,15 @@ select {
 }
 
 .cooler-facebook-border {
-  border: 3px #337ab7 solid;
-  border-radius: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .cooler-facebook-border-margin {
-  border: 3px #337ab7 solid;
-  border-radius: 15px;
+  /*border: 3px #337ab7 solid;
+  border-radius: 15px;*/
+  border: 1px solid #ccc;
+  border-radius: 4px;
   width: 371px;
   margin-right: 10px;
   margin-bottom: 20px;
@@ -121,6 +123,16 @@ select {
     border-width: 8px;
   }
 
+/* friend nav */
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #007bff;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
 /* friend box */
 .friend-box {
   padding: 10px 10px;
@@ -145,4 +157,8 @@ select {
 
 .width-132 {
   width: 132px;
+}
+
+.margin-top-51{
+  margin-top: 51px;
 }

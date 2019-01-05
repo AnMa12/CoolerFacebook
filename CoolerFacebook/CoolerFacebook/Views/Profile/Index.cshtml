@@ -36,9 +36,9 @@
 else
 {
   <div class="row">
-    <div class="col-md-3" style="border: 1px gray dotted; background-color:lightgray; border-radius:15px; height:300px">
-
-    </div>
+    <img class="col-md-3" class="img-responsive user-photo"
+         src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+         style="margin-left:-15px; height: 270px; width: 300px; border-radius: 8px;">
     <div class="col-md-6">
       <div class="row margin-bottom">
         <div class="col-sm-4">
@@ -85,7 +85,7 @@ else
     </div>
   </div>
   <h1>@ViewBag.message</h1>
-  if (ViewBag.Albums != null)
+  if (ViewBag.Albums.Count != 0 && ViewBag.Albums!= null)
   {
     <div class="row">
       <div class="col-md-3">
@@ -107,12 +107,7 @@ else
       @foreach (CoolerFacebook.Models.Album album in ViewBag.Albums)
       {
         <div class="col-md-4 cooler-facebook-border-margin center-icon"
-             style="border: 3px #337ab7 solid;
-                    border-radius: 15px;
-                    width: 371px;
-                    margin-right: 10px;
-                    margin-bottom: 20px;
-                    padding: 10px">
+             style="margin-right: 10px; margin-bottom: 20px; padding: 10px">
           @Html.Partial("AlbumListPartial", album)
         </div>
       }

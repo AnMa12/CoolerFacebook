@@ -3,50 +3,85 @@
   ViewBag.Title = "Friends";
 }
 
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
 <h2 class="theme-color title-style">Prietenii mei</h2>
 <hr />
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<!-- Nav pills -->
+<ul class="nav nav-pills" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Prieteni</a>
+    <a class="nav-link active" data-toggle="pill" href="#home">Prieteni</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Cereri de prietenie</a>
+    <a class="nav-link" data-toggle="pill" href="#menu1">Cereri de prietenie</a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        
-        @if (ViewBag.friends != null)
-        {
-            foreach (var fr in ViewBag.friends)
-            {
-                <p>@fr.Friend2.LastName</p>
-                <p>@fr.Friend2.FirstName</p>
-                <hr />
-            }
-        }
-        else
-        {
-            <p>Nu aveti prieteeeeeeeeeeeni </p>
-        }
-    </div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        @if (ViewBag.friendRequests != null)
-        {
-            foreach (var fr in ViewBag.friendRequests)
-            {
-                <p>@fr.Sender.LastName</p>
-                <p>@fr.Sender.FirstName</p>
-                <form action="/Profile/Show/@fr.Sender.ProfileId" method="post">
-                    <button type="submit" class="btn btn-primary">Vezi profil</button>
-                </form>
-                <hr />
-            }
-        }
-        else
-        {
-            <p>Nu aveti cereriiiiiiiiiiii </p>
-        }
-    </div>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div id="home" class="container tab-pane active">
+    <br>
+    @if (ViewBag.friends != null)
+    {
+      foreach (var fr in ViewBag.friends)
+      {
+        <div class="col-md-5 friend-box">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="img-responsive user-photo"
+                   src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div>
+            <div class="col-md-4 margin-top-42">
+              <p><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+              <p><strong>Nume: </strong>@fr.Friend2.LastName</p>
+            </div>
+            <div class="col-md-4 center-icon margin-top-51">
+              <form action="/Profile/Show/@fr.Friend2.ProfileId" method="post">
+                <button type="submit" class="btn btn-primary width-132">Vezi profil</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      }
+    }
+    else
+    {
+      <p>Nu aveti prieteeeeeeeeeeeni </p>
+    }
+  </div>
+  <div id="menu1" class="container tab-pane fade">
+    <br>
+    @if (ViewBag.friendRequests != null)
+    {
+      foreach (var fr in ViewBag.friendRequests)
+      {
+        <div class="col-md-5 friend-box">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="img-responsive user-photo"
+                   src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div>
+            <div class="col-md-4 margin-top-42">
+              <p><strong>Prenume: </strong>@fr.Sender.FirstName</p>
+              <p><strong>Nume: </strong>@fr.Sender.LastName</p>
+            </div>
+            <div class="col-md-4 center-icon margin-top-51">
+              <form action="/Profile/Show/@fr.Sender.ProfileId" method="post">
+                <button type="submit" class="btn btn-primary width-132">Vezi profil</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      }
+    }
+    else
+    {
+      <p>Nu aveti cereriiiiiiiiiiii </p>
+    }
+  </div>
 </div>

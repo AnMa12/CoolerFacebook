@@ -3,7 +3,7 @@
   ViewBag.Title = "Show";
 }
 
-<h2 class="theme-color title-style">Profilul lui X</h2>
+<h2 class="theme-color title-style">Profilul lui @ViewBag.Profile.FirstName @ViewBag.Profile.LastName</h2>
 <hr />
 
 @if (ViewBag.Profile == null)
@@ -19,87 +19,91 @@
 else
 {
   <div class="row">
-    <div class="col-md-3" style="border: 1px gray dotted; background-color:lightgray; border-radius:15px; height:300px">
-
-    </div>
+    <img class="col-md-3" class="img-responsive user-photo"
+         src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+         style="margin-left:-15px; height: 270px; width: 300px; border-radius: 8px;">
     <div class="col-md-6">
-        <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <div class="list-group-item">
-                    Prenume
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="list-group-item">
-                    @ViewBag.Profile.FirstName
-                </div>
-            </div>
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Prenume
+          </div>
         </div>
-        <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <div class="list-group-item">
-                    Nume
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="list-group-item">
-                    @ViewBag.Profile.LastName
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.FirstName
+          </div>
         </div>
-        <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <div class="list-group-item">
-                    Descriere
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="list-group-item">
-                    @ViewBag.Profile.Description
-                </div>
-            </div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Nume
+          </div>
         </div>
-        @if(@ViewBag.friend == "Anuleaza")
-        {
-        <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <form action="/Friend/CancelRequest/@ViewBag.profile.ProfileId" method="post">
-                    <button type="submit" class="btn btn-primary">Anuleaza</button>
-                </form>
-            </div>
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.LastName
+          </div>
         </div>
-        }
-        @if(@ViewBag.friend == "Accepta")
-        {
-        <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <form action="/Friend/AddFriend/@ViewBag.profile.ProfileId" method="post">
-                    <button type="submit" class="btn btn-primary">Accepta</button>
-                </form>
-            </div>
+      </div>
+      <div class="row margin-bottom">
+        <div class="col-sm-4">
+          <div class="list-group-item">
+            Descriere
+          </div>
         </div>
-        }
+        <div class="col-sm-6">
+          <div class="list-group-item">
+            @ViewBag.Profile.Description
+          </div>
+        </div>
+      </div>
+      @if (@ViewBag.friend == "Anuleaza")
+      {
+        <div class="row margin-bottom">
+          <div class="col-sm-4">
+            <button style="cursor: context-menu;" class="btn btn-primary disabled friend-button">Nu sunteti prieteni</button>
+            <form action="/Friend/CancelRequest/@ViewBag.profile.ProfileId" method="post">
+              <button type="submit" class="btn btn-primary">Anuleaza trimiterea cererii de prietenie</button>
+            </form>
+          </div>
+        </div>
+      }
+      @if (@ViewBag.friend == "Accepta")
+      {
+        <div class="row margin-bottom">
+          <div class="col-sm-4">
+            <button style="cursor: context-menu;" class="btn btn-primary disabled friend-button">Nu sunteti prieteni</button>
+            <form action="/Friend/AddFriend/@ViewBag.profile.ProfileId" method="post">
+              <button type="submit" class="btn btn-primary">Accepta cererea de prietenie</button>
+            </form>
+          </div>
+        </div>
+      }
 
-        @if(@ViewBag.friend == "Unfriend")
-        {
+      @if (@ViewBag.friend == "Unfriend")
+      {
         <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <form action="/Friend/AddRequest/@ViewBag.profile.ProfileId" method="post">
-                    <button type="submit" class="btn btn-primary">Adauga </button>
-                </form>
-            </div>
+          <div class="col-sm-4">
+            <button style="cursor: context-menu;" class="btn btn-primary disabled friend-button">Nu sunteti prieteni</button>
+            <form action="/Friend/AddRequest/@ViewBag.profile.ProfileId" method="post">
+              <button type="submit" class="btn btn-primary">Trimite cerere de prietenie</button>
+            </form>
+          </div>
         </div>
-        }
-        @if (@ViewBag.friend == "Friend")
-        {
+      }
+      @if (@ViewBag.friend == "Friend")
+      {
         <div class="row margin-bottom">
-            <div class="col-sm-4">
-                <form action="/Friend/DeleteFriend/@ViewBag.profile.ProfileId" method="post">
-                    <button type="submit" class="btn btn-primary">Sterge</button>
-                </form>
-            </div>
+          <div class="col-sm-4">
+            <button style="cursor: context-menu;" class="btn btn-primary disabled friend-button">Sunteti prieteni</button>
+            <form action="/Friend/DeleteFriend/@ViewBag.profile.ProfileId" method="post">
+              <button type="submit" class="btn btn-primary">Sterge de la prietenie</button>
+            </form>
+          </div>
         </div>
-        }
+      }
     </div>
   </div>
   <h1>@ViewBag.message</h1>
@@ -107,11 +111,15 @@ else
   <hr />
   if (ViewBag.Albums != null)
   {
-    foreach (CoolerFacebook.Models.Album album in ViewBag.Albums)
-    {
-      @Html.Partial("AlbumListShowPartial", album);
-      <hr />
-    }
+    <div class="row">
+      @foreach (CoolerFacebook.Models.Album album in ViewBag.Albums)
+      {
+        <div class="col-md-4 cooler-facebook-border-margin center-icon"
+             style="margin-right: 10px; margin-bottom: 20px; padding: 10px">
+          @Html.Partial("AlbumListShowPartial", album)
+        </div>
+      }
+    </div>
   }
   else
   {
