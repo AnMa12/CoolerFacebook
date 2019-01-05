@@ -1,17 +1,76 @@
 ﻿@{
-    ViewBag.Title = "Albums";
+  ViewBag.Title = "Albums";
 }
-<h3>Prieteni</h3>
-@if (ViewBag.friends != null)
-{
-    foreach (var fr in ViewBag.friends)
+<h2 class="theme-color title-style">Chat</h2>
+<hr />
+
+<div class="cooler-facebook-border row" style="height:550px">
+  <div class="col-md-3 friends-list-scroll" style="border-right: 1px #ccc solid; height:550px;
+                               overflow: scroll;
+                               -webkit-overflow-scrolling: touch;">
+    @if (ViewBag.friends != null)
     {
-        <p>@fr.Friend2.LastName</p>
-        <p>@fr.Friend2.FirstName</p>
-        <hr />
+      foreach (var fr in ViewBag.friends)
+      {
+        <div style="border-bottom: 1px #ccc solid; width:107%; margin-left: -7%;">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="img-responsive user-photo"
+                   src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+            </div>
+            <div class="col-md-6" style="margin-left: -15px;">
+              <p style="margin-top:10%"><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+              <p><strong>Nume: </strong>@fr.Friend2.LastName</p>
+            </div>
+            <button type="button"
+                    class="btn btn-primary">
+              Converseaza
+            </button>
+          </div>
+        </div>
+      }
     }
-}
-else
-{
-    <p>Nu aveti prieteeeeeeeeeeeni </p>
-}
+    else
+    {
+      <p>Nu aveti prieteeeeeeeeeeeni </p>
+    }
+  </div>
+  <div class="col-md-9">
+    <div style="height:480px; width:101.7%;
+                               overflow: scroll;
+                               -webkit-overflow-scrolling: touch;">
+      <ul class="list-group">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+    </div>
+    <div style="height: 50px; margin-top:7px">
+      <div style="float: left; width: 85%;" class="form-group">
+        <textarea class="form-control" rows="2" id="text" name="text"></textarea>
+      </div>
+      <button style="float: right;" type="submit"
+              class="btn btn-primary">
+        Trimite mesaj
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

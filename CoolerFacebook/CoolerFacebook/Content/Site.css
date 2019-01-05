@@ -162,3 +162,14 @@ a:active, a:hover {
 .margin-top-51{
   margin-top: 51px;
 }
+
+/* chat style */
+.friends-list-scroll {
+  border-right: 1px #ccc solid;
+  height: 550px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.messages-scroll {
+}
