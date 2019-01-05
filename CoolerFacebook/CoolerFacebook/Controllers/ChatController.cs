@@ -26,6 +26,12 @@ namespace CoolerFacebook.Controllers
             if(idProfile != null)
             {
                 ViewBag.friendProfileId = idProfile;
+
+                /* anna - add chattingFriend to get the chattingFriend name */
+                Profile chattingFriend = db.Profiles.Find(Int32.Parse(idProfile));
+                ViewBag.chattingFriend = chattingFriend;
+                /* anna - end */
+
                 int id = int.Parse(idProfile);
                 Profile friendProfile = db.Profiles.Find(id);
  

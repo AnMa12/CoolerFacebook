@@ -12,25 +12,72 @@
     {
       foreach (var fr in ViewBag.friends)
       {
-        <div style="border-bottom: 1px #ccc solid; width:107%; margin-left: -7%;">
+        if (@ViewBag.chattingFriend == null)
+        {
+          <div style="border-bottom: 1px #ccc solid; width: 114%; margin-left: -7%;">
             <div class="row">
-                <div class="col-md-6">
-                    <img class="img-responsive user-photo"
-                         src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+              <div class="col-md-5">
+                <img class="img-responsive user-photo"
+                     src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+              </div>
+              <div class="col-md-7" style="margin-left: -15px;">
+                <p style="margin-top:8%; margin-bottom: -1%;"><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+                <p style="margin-bottom: 0%;"><strong>Nume: </strong>@fr.Friend2.LastName</p>
+              </div>
+              <form action="/Chat/Index" method="get">
+                <input type="hidden" name="idProfile" value="@fr.Friend2.ProfileId" />
+                <button type="submit" class="btn btn-primary active">
+                  Converseaza
+                </button>
+              </form>
+            </div>
+          </div>
+        }
+        else
+        {
+          if (@fr.Friend2.FirstName == @ViewBag.chattingFriend.FirstName && @fr.Friend2.LastName == @ViewBag.chattingFriend.LastName)
+          {
+            <div style="border-bottom: 1px #ccc solid; width: 114%; background-color: #a79f9f54; margin-left: -7%;">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="img-responsive user-photo"
+                       src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                 </div>
-                <div class="col-md-6" style="margin-left: -15px;">
-                    <p style="margin-top:10%"><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
-                    <p><strong>Nume: </strong>@fr.Friend2.LastName</p>
+                <div class="col-md-7" style="margin-left: -15px;">
+                  <p style="margin-top:8%; margin-bottom: -1%;"><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+                  <p style="margin-bottom: 0%;"><strong>Nume: </strong>@fr.Friend2.LastName</p>
                 </div>
                 <form action="/Chat/Index" method="get">
-                    <input type="hidden" name="idProfile" value="@fr.Friend2.ProfileId" />
-                    <button type="submit"
-                            class="btn btn-primary">
-                        Converseaza
-                    </button>
+                  <input type="hidden" name="idProfile" value="@fr.Friend2.ProfileId" />
+                  <button type="submit" class="btn btn-primary active">
+                    Converseaza
+                  </button>
                 </form>
+              </div>
             </div>
-        </div>
+          }
+          else
+          {
+            <div style="border-bottom: 1px #ccc solid; width: 114%; margin-left: -7%;">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="img-responsive user-photo"
+                       src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div>
+                <div class="col-md-7" style="margin-left: -15px;">
+                  <p style="margin-top:8%; margin-bottom: -1%;"><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+                  <p style="margin-bottom: 0%;"><strong>Nume: </strong>@fr.Friend2.LastName</p>
+                </div>
+                <form action="/Chat/Index" method="get">
+                  <input type="hidden" name="idProfile" value="@fr.Friend2.ProfileId" />
+                  <button type="submit" class="btn btn-primary active">
+                    Converseaza
+                  </button>
+                </form>
+              </div>
+            </div>
+          }
+        }
       }
     }
     else
@@ -39,41 +86,60 @@
     }
   </div>
   <div class="col-md-9">
-      <div style="height:480px; width:101.7%;
+    <h4 class="theme-color title-style" style="height: 30px;
+    margin-bottom: 0%;
+    padding-left: 1.8%;
+    margin-left: -1.8%;
+    border-bottom: #ccc solid 1px;
+    width: 103.6%;">
+      @if (@ViewBag.chattingFriend != null)
+      {
+        @ViewBag.chattingFriend.FirstName @ViewBag.chattingFriend.LastName
+      }
+    </h4>
+    <div style="height:440px; width:101.7%;
                                overflow: scroll;
                                -webkit-overflow-scrolling: touch;">
-          <ul class="list-group">
-              @if (ViewBag.messages != null)
-              {
-                  foreach (var mes in ViewBag.messages)
-                  {
-                      <li class="list-group-item">@mes.Text from @mes.Sender.FirstName</li>
-                  }
-
-              }
-              
-          </ul>
-      </div>
-      <form action="/Chat/Index" method="get">
-          @if (ViewBag.friendProfileId != null)
+      <ul class="list-group">
+        @if (ViewBag.messages != null)
+        {
+          foreach (var mes in ViewBag.messages)
           {
-              <input type="hidden" name="idProfile" value="@ViewBag.friendProfileId" />
+            if (@mes.Sender.ProfileId.ToString() == ViewBag.friendProfileId)
+            {
+              <li class="list-group-item" style="width: 60%;
+                                                   margin-top: 10px;
+                                                   float: left;">
+                @mes.Text
+              </li>
+            }
+            else
+            {
+              <li class="list-group-item" style="width: 60%;
+                                                   margin-top: 10px;
+                                                   margin-right: 10px;
+                                                   float: right;">
+                @mes.Text
+              </li>
+            }
           }
-          <div style="height: 50px; margin-top:7px">
-              <div style="float: left; width: 85%;" class="form-group">
-                  <textarea class="form-control" rows="2" id="text" name="text"></textarea>
-              </div>
-              <button style="float: right;" type="submit"
-                      class="btn btn-primary">
-                  Trimite mesaj
-              </button>
-          </div>
-      </form>
+        }
+      </ul>
+    </div>
+    <form action="/Chat/Index" method="get">
+      @if (ViewBag.friendProfileId != null)
+      {
+        <input type="hidden" name="idProfile" value="@ViewBag.friendProfileId" />
+      }
+      <div style="height: 50px; margin-top:7px">
+        <div style="float: left; width: 85%;" class="form-group">
+          <textarea class="form-control" rows="2" id="text" name="text"></textarea>
+        </div>
+        <button style="float: right;" type="submit"
+                class="btn btn-primary">
+          Trimite mesaj
+        </button>
+      </div>
+    </form>
   </div>
 </div>
-
-
-
-
-
-
