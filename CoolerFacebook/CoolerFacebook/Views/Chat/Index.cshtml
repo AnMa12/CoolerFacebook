@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Albums";
+}
+<h3>Prieteni</h3>
+@if (ViewBag.friends != null)
+{
+    foreach (var fr in ViewBag.friends)
+    {
+        <p>@fr.Friend2.LastName</p>
+        <p>@fr.Friend2.FirstName</p>
+        <hr />
+    }
+}
+else
+{
+    <p>Nu aveti prieteeeeeeeeeeeni </p>
+}
