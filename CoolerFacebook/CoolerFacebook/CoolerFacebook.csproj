@@ -199,6 +199,7 @@
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -211,11 +212,14 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\FriendRequest.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Mesaj.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\ProfileGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -293,6 +297,8 @@
     <Content Include="Views\Friend\SearchFriend.cshtml" />
     <Content Include="Views\Shared\ProfileListShowPartial.cshtml" />
     <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Group";
+}
+<br />
+<br />
+<form method="post" action="/Group/New">
+    <label for="GroupName">Nume:</label>
+    <input type="text" class="form-control" id="Name" aria-describedby="emailHelp" placeholder="Nume"
+           name="Name">
+    <button type="submit" class="btn btn-primary width-132">Creeaza grup</button>
+</form>
+<h2>Grupuri:</h2>
+@if (ViewBag.groups != null)
+{
+    foreach (var grp in ViewBag.groups)
+    {
+        <br />
+        <p>@grp.Name</p>
+        <form method="post" action="/Group/Show">
+            <input type="hidden" name="GroupId" value="@grp.GroupId" />
+            <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
+            <hr />
+        </form>
+    }
+}
+else
+{
+    <p>Nu faceti parte din niciun grup!</p>
+}

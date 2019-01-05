@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Show";
+}
+<h1>@ViewBag.group.Name</h1>
+<br />
+<hr />
+<br />
+
+@if(ViewBag.group.Mesajs.Count() != 0 )
+{
+    foreach(var mesaj in ViewBag.group.Mesajs)
+    {
+        <br />
+        <p>@mesaj.Profile.FirstName</p>
+        <p>@mesaj.text</p>
+        <hr />
+    }
+}
+else
+{
+    <p> nu sunt postari</p>
+}

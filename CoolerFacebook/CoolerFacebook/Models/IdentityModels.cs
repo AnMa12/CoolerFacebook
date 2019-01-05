@@ -38,5 +38,8 @@ namespace CoolerFacebook.Models
         public DbSet<FriendRequest> FriendRequests { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<ProfileGroup> ProfileGroups { get; set; }
+        public DbSet<Mesaj> Mesajs { get; set; }
     }
 }
