@@ -13,7 +13,7 @@ namespace CoolerFacebook.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Chat
-        public ActionResult Index()
+         public ActionResult Index(string idProfile, string text)
         {
             var currentUserId = User.Identity.GetUserId();
             Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
@@ -23,8 +23,90 @@ namespace CoolerFacebook.Controllers
                           select friend;
             ViewBag.friends = friends;
 
+            if(idProfile != null)
+            {
+                ViewBag.friendProfileId = idProfile;
+                int id = int.Parse(idProfile);
+                Profile friendProfile = db.Profiles.Find(id);
+ 
+                Chat chat1 = (from chat in db.Chats
+                              where chat.Friend1.ProfileId == currentProfile.ProfileId && chat.Friend2.ProfileId == friendProfile.ProfileId
+                              select chat).FirstOrDefault();
+
+                Chat chat2 = (from chat in db.Chats
+                              where chat.Friend1.ProfileId == friendProfile.ProfileId && chat.Friend2.ProfileId == currentProfile.ProfileId
+                              select chat).FirstOrDefault();
+
+               
+                if (chat1 == null && chat2 == null)
+                {
+                    try
+                    {
+                            Chat chat = new Chat(currentProfile, friendProfile);
+                        
+                            db.Chats.Add(chat);
+                            db.SaveChanges();
+                        
+                    }
+                    catch (Exception e)
+                    {
+                        return View("Index");
+                    }
+
+             
+                }
+                else
+                    if(chat1 != null)
+                {
+                    if (text != null)
+                    {
+                        try
+                        {
+                            Message mes = new Message(text, chat1, currentProfile);
+
+                            db.Messages.Add(mes);
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return View("Index");
+                        }
+                    }
+                    ViewBag.messages = from mes in db.Messages
+                                       where mes.Chat.ChatId == chat1.ChatId
+                                       orderby mes.Date
+                                       select mes;
+
+                }
+                else if( chat2 != null)
+                {
+                    if (text != null)
+                    {
+                        try
+                        {
+                            Message mes = new Message(text, chat2, currentProfile);
+
+                            db.Messages.Add(mes);
+                            db.SaveChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            return View("Index");
+                        }
+                    }
+                    //ViewBag.messages = chat2.Messages;
+                    ViewBag.messages = from mes in db.Messages
+                                       where mes.Chat.ChatId == chat2.ChatId
+                                       orderby mes.Date
+                                       select mes;
+                }
+
+            }
+
             
             return View();
         }
+
+      
     }
 }

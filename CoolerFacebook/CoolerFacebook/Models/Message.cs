@@ -14,5 +14,14 @@ namespace CoolerFacebook.Models
         public DateTime Date { get; set; }
         public virtual Chat Chat { get; set; }
         public virtual Profile Sender { get; set; }
+
+        public Message() { }
+        public Message(string text, Chat chat, Profile sender)
+        {
+            this.Text = text;
+            this.Date = DateTime.Now;
+            this.Chat = chat;
+            this.Sender = sender;
+        }
     }
 }

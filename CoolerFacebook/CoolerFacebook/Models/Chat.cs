@@ -14,5 +14,12 @@ namespace CoolerFacebook.Models
         public virtual Profile Friend2 { get; set; }
 
         public virtual ICollection<Message> Messages { get; set;}
+
+        public Chat() { }
+        public Chat(Profile fr1, Profile fr2)
+        {
+            this.Friend1 = fr1;
+            this.Friend2 = fr2;
+        }
     }
 }
