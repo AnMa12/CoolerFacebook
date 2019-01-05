@@ -16,13 +16,13 @@
     {
         <br />
         <p>@grp.Name</p>
-        <form method="post" action="/Group/Show">
+        <form method="get" action="/Group/Show">
             <input type="hidden" name="GroupId" value="@grp.GroupId" />
             <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
             <hr />
         </form>
     }
-}
+} 
 else
 {
     <p>Nu faceti parte din niciun grup!</p>

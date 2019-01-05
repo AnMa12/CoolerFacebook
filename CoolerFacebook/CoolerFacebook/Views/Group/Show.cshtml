@@ -3,10 +3,15 @@
 }
 <h1>@ViewBag.group.Name</h1>
 <br />
+<form method="post" action="/Group/Delete/@ViewBag.group.GroupId">
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button type="submit" class="btn btn-primary width-132">Iesire din grup</button>
+    <hr />
+</form>
 <hr />
 <br />
 
-@if(ViewBag.group.Mesajs.Count() != 0 )
+@if(ViewBag.group.Mesajs != null )
 {
     foreach(var mesaj in ViewBag.group.Mesajs)
     {
@@ -16,7 +21,17 @@
         <hr />
     }
 }
-else
-{
-    <p> nu sunt postari</p>
-}
+        <form action="/Group/Show" method="get">
+   
+            <input type="hidden" name="GroupId" value="@ViewBag.group.GroupId" />
+           
+            <div style="height: 50px; margin-top:7px">
+                <div style="float: left; width: 85%;" class="form-group">
+                    <textarea class="form-control" rows="2" id="text" name="text"></textarea>
+                </div>
+                <button style="float: right;" type="submit"
+                        class="btn btn-primary">
+                    Posteaza mesaj
+                </button>
+            </div>
+        </form>
