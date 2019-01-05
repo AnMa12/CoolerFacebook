@@ -188,11 +188,11 @@ namespace CoolerFacebook.Controllers
 
                         if (friends == null)
                         {
-                            prf.Path = "Unfriend";
+                            prf.Path = "Nu sunteti prieteni";
                         }
                         else
                         {
-                            prf.Path = "Friend";
+                            prf.Path = "Sunteti prieteni";
                         }
                     }
                 }

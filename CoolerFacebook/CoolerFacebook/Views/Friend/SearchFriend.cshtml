@@ -2,45 +2,66 @@
   ViewBag.Title = "SearchFriend";
 }
 
-<h1> Cauta prieteni </h1>
+<h2 class="theme-color title-style">Cauta prieteni noi</h2>
+<hr />
 <form action="/Friend/SearchFriend" method="get">
-  <div class="form-group">
-    <label for="lastName">Nume</label>
-    <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume"
-           name="lastName">
+  <div class="row">
+    <div class="col-md-3 form-group">
+      <label for="firstName">Cauta noi prieteni dupa: Prenume</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Prenume"
+             name="firstName">
+    </div>
+    <div class="col-md-1 form-group center-icon" style="margin-top: 24px;">
+      <label for="lastName">sau</label>
+    </div>
+    <div class="col-md-3 form-group">
+      <label for="lastName">Cauta noi prieteni dupa: Nume</label>
+      <input type="text" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Nume"
+             name="lastName">
+    </div>
+    <div class="col-md-3 form-group">
+      <button type="submit" class="btn btn-primary" style="margin-top: 28px;">Cautare</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="firstName">Prenume</label>
-    <input type="text" class="form-control" id="firstName" placeholder="Prenume"
-           name="firstName">
-  </div>
-  <button type="submit" class="btn btn-primary">Cautare</button>
 </form>
-
+<hr />
 @if (ViewBag.profiles != null)
 {
-  foreach (var prf in ViewBag.profiles)
+<div class="row" style="margin-left: 0px">
+  @foreach (var prf in ViewBag.profiles)
   {
     if (@prf.Visibility == "public")
     {
-      <p>@prf.LastName</p>
-      <p>@prf.FirstName</p>
-      <p>@prf.Path</p>
-
-      <form action="/Profile/Show/@prf.ProfileId" method="post">
-        <button type="submit" class="btn btn-primary">Vezi profil</button>
-      </form>
-      <hr />
+      <div class="col-md-5 friend-box">
+        <div class="row">
+          <div class="col-md-4">
+            <img class="img-responsive user-photo" 
+                 src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+          </div>
+          <div class="col-md-4 margin-top-42">
+            <p><strong>Prenume: </strong>@prf.FirstName</p>
+            <p><strong>Nume: </strong>@prf.LastName</p>
+          </div>
+          <div class="col-md-4 center-icon margin-top-31">
+            <button type="submit" 
+                    style="cursor: context-menu;"
+                    class="btn btn-primary disabled friend-button">@prf.Path</button>
+            <form action="/Profile/Show/@prf.ProfileId" method="post">
+              <button type="submit" class="btn btn-primary width-132">Vezi profil</button>
+            </form>
+          </div>
+        </div>
+      </div>
     }
   }
+</div>
 }
-
 @*@if (ViewBag.Profiles != null)
-{
-  foreach (CoolerFacebook.Models.Profile profile in ViewBag.Profiles)
   {
-    @Html.Partial("ProfileListShowPartial", profile)
-  }
-}*@
+    foreach (CoolerFacebook.Models.Profile profile in ViewBag.Profiles)
+    {
+      @Html.Partial("ProfileListShowPartial", profile)
+    }
+  }*@
 
 

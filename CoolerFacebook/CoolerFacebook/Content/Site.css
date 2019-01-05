@@ -120,3 +120,29 @@ select {
     border-right-color: #ddd;
     border-width: 8px;
   }
+
+/* friend box */
+.friend-box {
+  padding: 10px 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.margin-top-42 {
+  margin-top: 42px;
+}
+
+.margin-top-31 {
+  margin-top: 31px;
+}
+
+.friend-button {
+  margin-bottom: 5px;
+  width: 132px;
+}
+
+.width-132 {
+  width: 132px;
+}
