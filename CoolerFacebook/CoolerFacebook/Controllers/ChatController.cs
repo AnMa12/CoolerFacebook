@@ -21,7 +21,11 @@ namespace CoolerFacebook.Controllers
             var friends = from friend in db.Friends
                           where friend.Friend1.ProfileId == currentProfile.ProfileId
                           select friend;
-            ViewBag.friends = friends;
+            if(friends.Count() != 0)
+            {
+                ViewBag.friends = friends;
+            }
+            
 
             if(idProfile != null)
             {

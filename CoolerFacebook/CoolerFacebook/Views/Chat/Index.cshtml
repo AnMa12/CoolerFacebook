@@ -80,66 +80,81 @@
         }
       }
     }
-    else
-    {
-      <p>Nu aveti prieteeeeeeeeeeeni </p>
-    }
   </div>
-  <div class="col-md-9">
-    <h4 class="theme-color title-style" style="height: 30px;
+  @if (ViewBag.friends != null)
+  {
+    <div class="col-md-9">
+      <h4 class="theme-color title-style" style="height: 30px;
     margin-bottom: 0%;
     padding-left: 1.8%;
     margin-left: -1.8%;
     border-bottom: #ccc solid 1px;
     width: 103.6%;">
-      @if (@ViewBag.chattingFriend != null)
-      {
-        @ViewBag.chattingFriend.FirstName @ViewBag.chattingFriend.LastName
-      }
-    </h4>
-    <div style="height:440px; width:101.7%;
+        @if (@ViewBag.chattingFriend != null)
+        {
+          @ViewBag.chattingFriend.FirstName @ViewBag.chattingFriend.LastName
+        }
+      </h4>
+      <div style="height:440px; width:101.7%;
                                overflow: scroll;
                                -webkit-overflow-scrolling: touch;">
-      <ul class="list-group">
-        @if (ViewBag.messages != null)
-        {
-          foreach (var mes in ViewBag.messages)
+        <ul class="list-group">
+          @if (ViewBag.messages != null)
           {
-            if (@mes.Sender.ProfileId.ToString() == ViewBag.friendProfileId)
+            foreach (var mes in ViewBag.messages)
             {
-              <li class="list-group-item" style="width: 60%;
+              if (@mes.Sender.ProfileId.ToString() == ViewBag.friendProfileId)
+              {
+                <li class="list-group-item" style="width: 60%;
                                                    margin-top: 10px;
                                                    float: left;">
-                @mes.Text
-              </li>
-            }
-            else
-            {
-              <li class="list-group-item" style="width: 60%;
+                  @mes.Text
+                </li>
+              }
+              else
+              {
+                <li class="list-group-item" style="width: 60%;
                                                    margin-top: 10px;
                                                    margin-right: 10px;
                                                    float: right;">
-                @mes.Text
-              </li>
+                  @mes.Text
+                </li>
+              }
             }
           }
-        }
-      </ul>
-    </div>
-    <form action="/Chat/Index" method="get">
-      @if (ViewBag.friendProfileId != null)
-      {
-        <input type="hidden" name="idProfile" value="@ViewBag.friendProfileId" />
-      }
-      <div style="height: 50px; margin-top:7px">
-        <div style="float: left; width: 85%;" class="form-group">
-          <textarea class="form-control" rows="2" id="text" name="text"></textarea>
-        </div>
-        <button style="float: right;" type="submit"
-                class="btn btn-primary">
-          Trimite mesaj
-        </button>
+        </ul>
       </div>
-    </form>
-  </div>
+      <form action="/Chat/Index" method="get">
+        @if (ViewBag.friendProfileId != null)
+        {
+          <input type="hidden" name="idProfile" value="@ViewBag.friendProfileId" />
+        }
+        <div style="height: 50px; margin-top:7px">
+          <div style="float: left; width: 85%;" class="form-group">
+            <textarea class="form-control" rows="2" id="text" name="text"></textarea>
+          </div>
+          <button style="float: right;" type="submit"
+                  class="btn btn-primary">
+            Trimite mesaj
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+  else
+  {
+    <div class="center-icon no-profile-card">
+      <h4>
+        Momentan nu ai nici un prieten!
+      </h4>
+      <i class='fa fas-sad icon-style'></i>
+      <h4>Pentru a avea cu cine sa discuti, cauta acum noi prieteni!</h4>
+      <a href="/Friend/SearchFriend">
+        <button type="button"
+                class="btn btn-primary">
+          Cauta prieteni
+        </button>
+      </a>
+    </div>
+  }
 </div>
