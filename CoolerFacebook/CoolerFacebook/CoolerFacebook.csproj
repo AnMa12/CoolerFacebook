@@ -299,6 +299,7 @@
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Group\Show.cshtml" />
+    <Content Include="Views\Group\SearchGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
