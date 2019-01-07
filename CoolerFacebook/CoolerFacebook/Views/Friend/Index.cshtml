@@ -7,6 +7,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 </head>
 
 <h2 class="theme-color title-style">Prietenii mei</h2>
@@ -40,29 +42,44 @@
       <div class="row">
         @foreach (var fr in ViewBag.friends)
         {
-        <div class="col-md-5 friend-box">
-          <div class="row">
-            <div class="col-md-4">
-              <img class="img-responsive user-photo"
-                   src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-            </div>
-            <div class="col-md-4 margin-top-42">
-              <p><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
-              <p><strong>Nume: </strong>@fr.Friend2.LastName</p>
-            </div>
-            <div class="col-md-4 center-icon margin-top-51">
-              <form action="/Profile/Show/@fr.Friend2.ProfileId" method="post">
-                <button type="submit" class="btn btn-primary width-132">Vezi profil</button>
-              </form>
+          <div class="col-md-5 friend-box">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-responsive user-photo"
+                     src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+              </div>
+              <div class="col-md-4 margin-top-42">
+                <p><strong>Prenume: </strong>@fr.Friend2.FirstName</p>
+                <p><strong>Nume: </strong>@fr.Friend2.LastName</p>
+              </div>
+              <div class="col-md-4 center-icon margin-top-51">
+                <form action="/Profile/Show/@fr.Friend2.ProfileId" method="post">
+                  <button type="submit" class="btn btn-primary width-132">Vezi profil</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
         }
       </div>
     }
     else
     {
-      <p>Nu aveti prieteeeeeeeeeeeni </p>
+      <div class="center-icon no-profile-card">
+        <h3> Oops! </h3>
+        <i class='far fa-sad-tear icon-style'></i>
+        <h3 style="margin-top: 16px;">
+          Momentan nu ai nici un prieten!
+        </h3>
+        <h3>
+          Asta e sansa perfecta sa cauti prieteni, apasand pe butonul de mai jos!
+        </h3>
+        <a href="/Friend/SearchFriend">
+          <button type="button"
+                  class="btn btn-primary">
+            Cauta prieteni
+          </button>
+        </a>
+      </div>
     }
   </div>
   <div id="menu1" class="container tab-pane fade">
@@ -92,11 +109,22 @@
     }
     else
     {
-      <p>Nu aveti cereriiiiiiiiiiii </p>
-      <p>
-        Nu astepta sa vina ei la tine! Cauta tu noi prieteni: punem link spre Cauta prieteni noi
-        si facem si un buton de ma simt norocos unde sunt toti userii
-      </p>
+      <div class="center-icon no-profile-card">
+        <h3> Oops! </h3>
+        <i class='far fa-sad-tear icon-style'></i>
+        <h3 style="margin-top: 16px;">
+          Momentan nu ai nici o cerere de prietenie! Dar nu astepta sa vina ei la tine!
+        </h3>
+        <h3>
+          Cauta noi prieteni apasand butonul de mai jos!
+        </h3>
+        <a href="/Friend/SearchFriend">
+          <button type="button"
+                  class="btn btn-primary">
+            Cauta prieteni
+          </button>
+        </a>
+      </div>
     }
   </div>
 </div>
