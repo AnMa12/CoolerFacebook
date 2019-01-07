@@ -21,12 +21,19 @@ namespace CoolerFacebook.Controllers
             var friends = from friend in db.Friends
                           where friend.Friend1.ProfileId == currentProfile.ProfileId
                           select friend;
-            ViewBag.friends = friends;
+            if (friends.Count() != 0)
+            {
+                ViewBag.friends = friends;
+            }
 
             var requests = from fr in db.FriendRequests
                            where fr.Receiver.ProfileId == currentProfile.ProfileId
                            select fr;
-            ViewBag.friendRequests = requests;
+            if(requests.Count() !=0 )
+            {
+                ViewBag.friendRequests = requests;
+            }
+            
             return View();
         }
 
