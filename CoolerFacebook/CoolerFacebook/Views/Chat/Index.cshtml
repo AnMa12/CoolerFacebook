@@ -1,12 +1,17 @@
 ﻿@{
   ViewBag.Title = "Chat";
 }
+
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+</head>
 <h2 class="theme-color title-style">Chat</h2>
 <hr />
 
 <div class="cooler-facebook-border row" style="height:550px">
   <div class="col-md-3 friends-list-scroll" style="border-right: 1px #ccc solid; height:550px;
-                               overflow: scroll;
+                               overflow: scroll; background: white;
                                -webkit-overflow-scrolling: touch;">
     @if (ViewBag.friends != null)
     {
@@ -143,11 +148,11 @@
   }
   else
   {
-    <div class="center-icon no-profile-card">
+    <div class="center-icon no-profile-card" style="margin-top: 13%;">
       <h4>
         Momentan nu ai nici un prieten!
       </h4>
-      <i class='fa fas-sad icon-style'></i>
+      <i class='far fa-sad-tear icon-style'></i>
       <h4>Pentru a avea cu cine sa discuti, cauta acum noi prieteni!</h4>
       <a href="/Friend/SearchFriend">
         <button type="button"
