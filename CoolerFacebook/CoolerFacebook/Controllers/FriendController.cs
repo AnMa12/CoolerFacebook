@@ -17,7 +17,7 @@ namespace CoolerFacebook.Controllers
         {
             var currentUserId = User.Identity.GetUserId();
             Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
-
+           
             var friends = from friend in db.Friends
                           where friend.Friend1.ProfileId == currentProfile.ProfileId
                           select friend;
@@ -149,6 +149,10 @@ namespace CoolerFacebook.Controllers
         {
             var currentUserId = User.Identity.GetUserId();
             Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
+            if (User.IsInRole("Administrator"))
+            {
+                ViewBag.adm = "true";
+            }
             //ViewBag.Profiles = from profile in db.Profiles
             //                   select profile;
             if (lastName != null && firstName != null)

@@ -119,8 +119,7 @@ namespace CoolerFacebook.Controllers
                     TempData["message"] = "S-a modificat " + profile.FirstName;
                     profile.FirstName = requestProfile.FirstName;
                     profile.LastName = requestProfile.LastName;
-                    profile.Description = "lavinia";
-                        //requestProfile.Description;
+                    profile.Description = requestProfile.Description;
                     db.SaveChanges();
                     return RedirectToAction("Index","Home");
                 }

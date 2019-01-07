@@ -30,7 +30,7 @@
   <div class="row" style="margin-left: 0px">
     @foreach (var prf in ViewBag.profiles)
     {
-      if (@prf.Visibility == "public")
+      if (@prf.Visibility == "public" || ViewBag.adm != null)
       {
         <div class="col-md-5 friend-box">
           <div class="row">

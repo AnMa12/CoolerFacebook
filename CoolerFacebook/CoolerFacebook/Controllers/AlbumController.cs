@@ -88,7 +88,20 @@ namespace CoolerFacebook.Controllers
 
         public ActionResult ShowPhotos(int Id)
         {
+            var currentUserId = User.Identity.GetUserId();
+            
+            Profile currentProfile = db.Profiles.Where(i => i.User.Id == currentUserId).FirstOrDefault();
+
             var album = db.Albums.Find(Id);
+
+            if(currentProfile.ProfileId == album.Profile.ProfileId)
+            {
+                ViewBag.sterge = "true";
+            }
+            if(User.IsInRole("Administrator"))
+            {
+                ViewBag.sterge = "true";
+            }
             ViewBag.album = album;
             ViewBag.pics = album.Photos;
             return View();
