@@ -1,73 +1,58 @@
 ﻿
 @{
-    ViewBag.Title = "SearchGroup";
+  ViewBag.Title = "SearchGroup";
 }
 
 <h2 class="theme-color title-style">Cauta grupuri noi</h2>
 <hr />
 <form action="/Group/SearchGroup" method="get">
-    <div class="row">
-        <div class="col-md-3 form-group">
-            <label for="groupName">Nume:</label>
-            <input type="text" class="form-control" id="groupName" placeholder="Prenume"
-                   name="groupName">
-        </div>
-       
-
-        <div class="col-md-3 form-group">
-            <button type="submit" class="btn btn-primary" style="margin-top: 28px;">Cautare</button>
-        </div>
-    </div>
+  <label for="groupName">Nume:</label>
+  <br />
+  <input type="text" class="form-control" id="groupName" placeholder="Nume grup"
+         name="groupName">
+  <button type="submit" class="btn btn-primary" style="margin-top: 8px;">Cautare</button>
 </form>
 <hr />
 @if (ViewBag.grps != null)
 {
-    <div class="row" style="margin-left: 0px">
-        @foreach (var grp in ViewBag.grps)
-        {
-            
-                <div class="col-md-5 friend-box">
-                    <div class="row">
-                        
-                        <div class="col-md-4 margin-top-42">
-                            <p><strong>Prenume: </strong>@grp.Name</p>
-                            
-                        </div>
-                        <div class="col-md-4 center-icon margin-top-31">
-                            @if (ViewBag.join != null)
-                            {
-                                <button type="submit"
-                                        style="cursor: context-menu;"
-                                        class="btn btn-primary disabled friend-button">
-                                    @ViewBag.join
-                                </button>
-                                <form action="/Group/Show" method="get">
-                                    <input type="hidden" name="GroupId" value="@grp.GroupId" />
-                                    <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
-                                </form>
-                            }
-                            else
-                            {
-                                <form action="/Group/Join" method="get">
-                                    <input type="hidden" name="GroupId" value="@grp.GroupId" />
-                                    <button type="submit" class="btn btn-primary width-132">Join</button>
-                                </form>
-                            }
+  <div class="row" style="margin-left: 0px">
+    @foreach (var grp in ViewBag.grps)
+    {
+      <div class="col-md-4 friend-box">
+        <div class="center-icon">
+            <p><strong>Nume grup: </strong>@grp.Name</p>
+            @if (ViewBag.join != null)
+            {
+              <button type="submit"
+                      style="cursor: context-menu; width: 55%;"
+                      class="btn btn-primary disabled friend-button">
+                @ViewBag.join
+              </button>
+              <form action="/Group/Show" method="get">
+                <input type="hidden" name="GroupId" value="@grp.GroupId" />
+                <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
+              </form>
+            }
+            else
+            {
+              <form action="/Group/Join" method="get">
+                <input type="hidden" name="GroupId" value="@grp.GroupId" />
+                <button type="submit" class="btn btn-primary width-132">Join</button>
+              </form>
+            }
+        </div>
+      </div>
 
-                        </div>
-                    </div>
-                </div>
-            
-        }
-    </div>
+    }
+  </div>
 }
 @*@if (ViewBag.Profiles != null)
+  {
+    foreach (CoolerFacebook.Models.Profile profile in ViewBag.Profiles)
     {
-      foreach (CoolerFacebook.Models.Profile profile in ViewBag.Profiles)
-      {
-        @Html.Partial("ProfileListShowPartial", profile)
-      }
-    }*@
+      @Html.Partial("ProfileListShowPartial", profile)
+    }
+  }*@
 
 
 

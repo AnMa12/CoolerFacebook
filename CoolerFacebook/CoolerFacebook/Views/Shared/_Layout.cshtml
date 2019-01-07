@@ -20,10 +20,12 @@
                 @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                </ul>
+              <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Profilul meu", "Index", "Profile")</li>
+                <li>@Html.ActionLink("Prietenii mei", "Index", "Friend")</li>
+                <li>@Html.ActionLink("Grupurile mele", "Index", "Group")</li>
+                <li>@Html.ActionLink("Chat", "Index", "Chat")</li>
+              </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

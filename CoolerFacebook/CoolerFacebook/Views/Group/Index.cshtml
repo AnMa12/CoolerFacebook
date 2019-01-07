@@ -1,29 +1,88 @@
 ﻿@{
-    ViewBag.Title = "Group";
+  ViewBag.Title = "Group";
 }
-<br />
-<br />
-<form method="post" action="/Group/New">
-    <label for="GroupName">Nume:</label>
-    <input type="text" class="form-control" id="Name" aria-describedby="emailHelp" placeholder="Nume"
-           name="Name">
-    <button type="submit" class="btn btn-primary width-132">Creeaza grup</button>
-</form>
-<h2>Grupuri:</h2>
-@if (ViewBag.groups != null)
-{
-    foreach (var grp in ViewBag.groups)
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
+</head>
+
+
+<h2 class="theme-color title-style">Grupurile mele</h2>
+<hr />
+
+<!-- Nav pills -->
+<ul class="nav nav-pills" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="pill" href="#home">Grupuri</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="pill" href="#menu1">Creeaza grup</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div id="home" class="container tab-pane active">
+    <br />
+
+    @if (ViewBag.groups != null)
     {
-        <br />
-        <p>@grp.Name</p>
-        <form method="get" action="/Group/Show">
-            <input type="hidden" name="GroupId" value="@grp.GroupId" />
-            <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
-            <hr />
-        </form>
+      <a href="/Group/SearchGroup">
+        <button type="button"
+                class="btn btn-primary"
+                style="margin-left: -1.3%;">
+          Cauta noi grupuri
+        </button>
+      </a>
+      <br />
+      <br />
+      <div class="row">
+        @foreach (var grp in ViewBag.groups)
+        {
+          <div class="col-md-3 cooler-facebook-border center-icon"
+               style="padding: 17px 0px;
+                    margin-right: 45px;
+                    margin-bottom: 10px;">
+            <p><strong>Nume grup: </strong>@grp.Name</p>
+            <form method="get" action="/Group/Show">
+              <input type="hidden" name="GroupId" value="@grp.GroupId" />
+              <button type="submit" class="btn btn-primary width-132">Vezi grup</button>
+            </form>
+          </div>
+        }
+      </div>
     }
-} 
-else
-{
-    <p>Nu faceti parte din niciun grup!</p>
-}
+    else
+    {
+      <div class="center-icon no-profile-card">
+        <h4>
+          Momentan nu faci parte din nici un grup
+        </h4>
+        <i class='far fa-sad-tear icon-style'></i>
+        <h4>Gaseste persoane cu aceleasi hooby-uri ca tine chiar azi!</h4>
+        <h4>Alatura-te unui grup sau creeaza unul!</h4>
+        <a href="/Group/SearchGroup">
+          <button type="button"
+                  class="btn btn-primary">
+            Cauta grupuri
+          </button>
+        </a>
+      </div>
+    }
+  </div>
+  <div id="menu1" class="container tab-pane fade">
+    <br />
+    <form method="post" action="/Group/New">
+      <label for="GroupName">Nume:</label>
+      <br />
+      <input type="text" class="form-control" id="Name" aria-describedby="emailHelp" placeholder="Nume"
+             name="Name">
+      <br />
+      <button type="submit" class="btn btn-primary width-132">Creeaza grup</button>
+    </form>
+  </div>
+</div>

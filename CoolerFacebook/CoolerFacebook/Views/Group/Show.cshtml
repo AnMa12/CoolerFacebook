@@ -1,37 +1,54 @@
 ﻿@{
-    ViewBag.Title = "Show";
+  ViewBag.Title = "Show";
 }
-<h1>@ViewBag.group.Name</h1>
-<br />
-<form method="post" action="/Group/Delete/@ViewBag.group.GroupId">
-    @Html.HttpMethodOverride(HttpVerbs.Delete)
-    <button type="submit" class="btn btn-primary width-132">Iesire din grup</button>
-    <hr />
-</form>
-<hr />
-<br />
 
-@if(ViewBag.group.Mesajs != null )
+<h2 class="theme-color title-style">Nume grup: @ViewBag.group.Name</h2>
+<hr />
+
+<div class="row">
+  <div class="col-md-6" style="float:left">
+    <a href='@Url.Action("Index", "Group")'>
+      <button type="button" class="btn btn-primary">
+        < Inapoi la Grupurile mele
+      </button>
+    </a>
+  </div>
+  <div class="col-md-6" style="float:right">
+    <form method="post" action="/Group/Delete/@ViewBag.group.GroupId">
+      @Html.HttpMethodOverride(HttpVerbs.Delete)
+      <button type="submit" class="btn btn-primary width-132" style="margin-left: 76.6%;">Iesire din grup</button>
+    </form>
+  </div>
+</div>
+<h2>Mesajele utilizatorilor din grup:</h2>
+<hr />
+
+@if (ViewBag.group.Mesajs != null)
 {
-    foreach(var mesaj in ViewBag.group.Mesajs)
-    {
-        <br />
-        <p>@mesaj.Profile.FirstName</p>
-        <p>@mesaj.text</p>
-        <hr />
-    }
+  foreach (var mesaj in ViewBag.group.Mesajs)
+  {
+    <div class="cooler-facebook-border center-icon">
+      <div style="background-color: #b1aeae;">
+        <p><strong>Nume utilizator: </strong>@mesaj.Profile.FirstName</p>
+      </div>
+      <div>
+        <p><strong>Mesaj: </strong>@mesaj.text</p>
+      </div>
+    </div>
+    <br />
+  }
 }
-        <form action="/Group/Show" method="get">
-   
-            <input type="hidden" name="GroupId" value="@ViewBag.group.GroupId" />
-           
-            <div style="height: 50px; margin-top:7px">
-                <div style="float: left; width: 85%;" class="form-group">
-                    <textarea class="form-control" rows="2" id="text" name="text"></textarea>
-                </div>
-                <button style="float: right;" type="submit"
-                        class="btn btn-primary">
-                    Posteaza mesaj
-                </button>
-            </div>
-        </form>
+<form action="/Group/Show" method="get">
+
+  <input type="hidden" name="GroupId" value="@ViewBag.group.GroupId" />
+
+  <div style="height: 50px; margin-top:7px">
+    <div style="float: left; width: 85%;" class="form-group">
+      <textarea class="form-control" rows="2" id="text" name="text"></textarea>
+    </div>
+    <button style="float: right;" type="submit"
+            class="btn btn-primary">
+      Posteaza mesaj
+    </button>
+  </div>
+</form>
